@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/leetcode_hot100.dir/main.cpp.o CMakeFiles/leetcode_hot100.dir/function.cpp.o CMakeFiles/leetcode_hot100.dir/helper.cpp.o -o leetcode_hot100
