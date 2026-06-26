@@ -1,6 +1,7 @@
 #include "function.hpp"
 
 #include <algorithm>
+#include <set>
 #include <stack>
 #include <string>
 #include <unordered_map>
@@ -178,4 +179,43 @@ int lengthOfLongestSubstring(const std::string &s) {
     length = std::max(length, index - left + 1);
   }
   return length;
+}
+
+// 找到字符串中所有字母异位词
+std::vector<int> findAnagrams(const std::string &s, const std::string &p) {
+  std::set<char> ss, ps;
+  std::vector<int> result;
+  if (s.size() < p.size())
+    return result;
+
+  for (int index = 0; index < p.size(); ++index) {
+    ps.insert(p[index]);
+  }
+  for (int index = 0; index < s.size() - p.size() + 1; ++index) {
+    for (int jndex = 0; jndex < p.size(); ++jndex) {
+      ss.insert(s[index + jndex]);
+    }
+    if (ss == ps) {
+      result.push_back(index);
+    }
+    ss.clear();
+  }
+  return result;
+}
+
+// 和为target的字数组
+int subarraySum(const std::vector<int> &nums, int target) {
+  std::unordered_map<int, int> mp;
+  mp[0] = 1;
+  int pre = 0;
+  int count = 0;
+
+  for (const int &x : nums) {
+    pre += x;
+    if (mp.find(pre - target) != mp.end()) {
+      count += mp[pre - target];
+    }
+    ++mp[pre];
+  }
+  return count;
 }

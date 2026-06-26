@@ -80,5 +80,25 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::string findAnagrams_s = "cbaebabacd";
+  std::string findAnagrams_p = "abc";
+  std::vector<int> findAnagrams_result;
+  findAnagrams_result = findAnagrams(findAnagrams_s, findAnagrams_p);
+  std::cout << "-----" << " The result of findAnagrams is below " << "-----"
+            << std::endl;
+  showVector(findAnagrams_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> subarraySum_nums{1, 2, 3};
+  int subarraySum_target = 3;
+  int subarraySum_result;
+  subarraySum_result = subarraySum(subarraySum_nums, subarraySum_target);
+  std::cout << "-----" << " The result of subarraySum is below " << "-----"
+            << std::endl;
+  std::cout << subarraySum_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

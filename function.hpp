@@ -14,5 +14,7 @@ int maxArea(const std::vector<int> &height);
 std::vector<std::vector<int>> threeSum(std::vector<int> &nums);
 int trap(const std::vector<int> &height);
 int lengthOfLongestSubstring(const std::string &s);
+std::vector<int> findAnagrams(const std::string &s, const std::string &p);
+int subarraySum(const std::vector<int> &nums, int target);
 
 #endif
