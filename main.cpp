@@ -100,5 +100,35 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> maxSlidingWindow_nums{1, 3, -1, -3, 5, 3, 6, 7};
+  int maxSlidingWindow_k = 3;
+  std::vector<int> maxSlidingWindow_result;
+  maxSlidingWindow_result =
+      maxSlidingWindow(maxSlidingWindow_nums, maxSlidingWindow_k);
+  std::cout << "-----" << " The result of maxSlidingWindow is below " << "-----"
+            << std::endl;
+  showVector(maxSlidingWindow_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string minWindow_s = "ADOBECODEBANC";
+  std::string minWindow_t = "ABC";
+  std::string minWindow_result;
+  minWindow_result = minWindow(minWindow_s, minWindow_t);
+  std::cout << "-----" << " The result of minWindow is below " << "-----"
+            << std::endl;
+  std::cout << minWindow_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> maxSubArray_nums{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+  int maxSubArray_result;
+  maxSubArray_result = maxSubArray(maxSubArray_nums);
+  std::cout << "-----" << " The result of maxSubArray is below " << "-----"
+            << std::endl;
+  std::cout << maxSubArray_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

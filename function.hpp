@@ -2,6 +2,7 @@
 #define FUNCTION_HPP
 
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 // function
@@ -16,5 +17,10 @@ int trap(const std::vector<int> &height);
 int lengthOfLongestSubstring(const std::string &s);
 std::vector<int> findAnagrams(const std::string &s, const std::string &p);
 int subarraySum(const std::vector<int> &nums, int target);
+std::vector<int> maxSlidingWindow(const std::vector<int> &nums, int k);
+std::string minWindow(std::string s, std::string t);
+bool minWindow_check(std::unordered_map<char, int> &sm,
+                     std::unordered_map<char, int> &tm);
+int maxSubArray(const std::vector<int> &nums);
 
 #endif

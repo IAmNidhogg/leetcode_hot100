@@ -1,11 +1,14 @@
 #include "function.hpp"
 
 #include <algorithm>
+#include <climits>
+#include <queue>
 #include <set>
 #include <stack>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 // function
@@ -218,4 +221,73 @@ int subarraySum(const std::vector<int> &nums, int target) {
     ++mp[pre];
   }
   return count;
+}
+
+// 滑动窗口最大值
+std::vector<int> maxSlidingWindow(const std::vector<int> &nums, int k) {
+  std::priority_queue<std::pair<int, int>> pq;
+  std::vector<int> result;
+  for (int index = 0; index < k; ++index) {
+    pq.emplace(nums[index], index);
+  }
+
+  result.push_back(pq.top().first);
+  for (int index = k; index < nums.size(); ++index) {
+    pq.emplace(nums[index], index);
+    while (pq.top().second <= index - k) {
+      pq.pop();
+    }
+    result.push_back(pq.top().first);
+  }
+  return result;
+}
+
+// 最小覆盖子串
+bool minWindow_check(std::unordered_map<char, int> &sm,
+                     std::unordered_map<char, int> &tm) {
+  for (const auto &ch : tm) {
+    if (sm[ch.first] < ch.second) {
+      return false;
+    }
+  }
+  return true;
+}
+
+std::string minWindow(std::string s, std::string t) {
+  std::unordered_map<char, int> sm;
+  std::unordered_map<char, int> tm;
+  for (const auto &ch : t) {
+    ++tm[ch];
+  }
+
+  int left = 0, right = -1;
+  int len = INT_MAX, r_left = -1, r_right = -1;
+
+  while (right < int(s.size())) {
+    if (tm.find(s[++right]) != tm.end()) {
+      ++sm[s[right]];
+    }
+    while (minWindow_check(sm, tm) && left <= right) {
+      if (right - left + 1 < len) {
+        len = right - left + 1;
+        r_left = left;
+      }
+      if (tm.find(s[left]) != tm.end()) {
+        --sm[s[left]];
+      }
+      ++left;
+    }
+  }
+  return r_left == -1 ? std::string() : s.substr(r_left, len);
+}
+
+// 最大子数组和
+int maxSubArray(const std::vector<int> &nums) {
+  int pre = 0;
+  int result = nums[0];
+  for (const auto &x : nums) {
+    pre = std::max(pre + x, x);
+    result = std::max(result, pre);
+  }
+  return result;
 }
