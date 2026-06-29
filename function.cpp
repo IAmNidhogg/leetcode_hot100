@@ -291,3 +291,65 @@ int maxSubArray(const std::vector<int> &nums) {
   }
   return result;
 }
+
+// 合并区间
+std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &intervals) {
+  if (intervals.size() == 0) {
+    return {};
+  }
+
+  std::vector<std::vector<int>> sorted = intervals;
+  std::sort(sorted.begin(), sorted.end());
+  std::vector<std::vector<int>> merged;
+  for (int index = 0; index < sorted.size(); ++index) {
+    if (merged.size() == 0 || sorted[index][0] > merged.back()[1]) {
+      merged.push_back(sorted[index]);
+    } else {
+      merged.back()[1] = std::max(sorted[index][1], merged.back()[1]);
+    }
+  }
+  return merged;
+}
+
+// 轮转数组
+void rotate(std::vector<int> &nums, int k) {
+  std::vector<int> tmpnums(nums.size());
+  for (int index = 0; index < nums.size(); ++index) {
+    tmpnums[(index + k) % nums.size()] = nums[index];
+  }
+  nums.assign(tmpnums.begin(), tmpnums.end());
+}
+
+// 除了自身以外数组的乘积
+std::vector<int> productExceptSelf(const std::vector<int> &nums) {
+  std::vector<int> result(nums.size(), 1);
+  int left = 0, right = nums.size() - 1;
+  int lp = 1, rp = 1;
+  while (left < nums.size() && right >= 0) {
+    result[left] *= lp;
+    result[right] *= rp;
+    lp *= nums[left++];
+    rp *= nums[right--];
+  }
+  return result;
+}
+
+// 缺失的第一个正数
+int firstMissingPositive(std::vector<int> &nums) {
+  std::sort(nums.begin(), nums.end());
+  int num = 1;
+  for (int index = 0; index < nums.size(); ++index) {
+    if (nums[index] <= 0) {
+      continue;
+    }
+    if (nums[index] == num) {
+      ++num;
+      continue;
+    } else if (index > 0 && nums[index] == nums[index - 1]) {
+      continue;
+    } else {
+      return num;
+    }
+  }
+  return num;
+}

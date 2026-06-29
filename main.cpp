@@ -130,5 +130,42 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<std::vector<int>> merge_intervals{
+      {1, 3}, {2, 6}, {8, 10}, {15, 18}};
+  std::vector<std::vector<int>> merge_result;
+  merge_result = merge(merge_intervals);
+  std::cout << "-----" << " The result of merge is below " << "-----"
+            << std::endl;
+  show2dVector(merge_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> rotate_nums{1, 2, 3, 4, 5, 6, 7};
+  int rotate_k = 3;
+  rotate(rotate_nums, rotate_k);
+  std::cout << "-----" << " The result of rotate is below " << "-----"
+            << std::endl;
+  showVector(rotate_nums);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> productExceptSelf_nums{1, 2, 3, 4};
+  std::vector<int> productExceptSelf_result;
+  productExceptSelf_result = productExceptSelf(productExceptSelf_nums);
+  std::cout << "-----" << " The result of productExceptSelf is below "
+            << "-----" << std::endl;
+  showVector(productExceptSelf_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> firstMissingPositive_nums{3, 4, -1, 1};
+  int firstMissingPositive_result;
+  firstMissingPositive_result = firstMissingPositive(firstMissingPositive_nums);
+  std::cout << "-----" << " The result of firstMissingPositive is below "
+            << "-----" << std::endl;
+  std::cout << firstMissingPositive_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

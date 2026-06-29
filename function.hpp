@@ -22,5 +22,9 @@ std::string minWindow(std::string s, std::string t);
 bool minWindow_check(std::unordered_map<char, int> &sm,
                      std::unordered_map<char, int> &tm);
 int maxSubArray(const std::vector<int> &nums);
+std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &intervals);
+void rotate(std::vector<int> &nums, int k);
+std::vector<int> productExceptSelf(const std::vector<int> &nums);
+int firstMissingPositive(std::vector<int> &nums);
 
 #endif
