@@ -353,3 +353,80 @@ int firstMissingPositive(std::vector<int> &nums) {
   }
   return num;
 }
+
+// 矩阵置零
+void setZeroes(std::vector<std::vector<int>> &matrix) {
+  std::vector<bool> row(matrix.size());
+  std::vector<bool> col(matrix[0].size());
+
+  for (int index = 0; index < matrix.size(); ++index) {
+    for (int jndex = 0; jndex < matrix[0].size(); ++jndex) {
+      if (matrix[index][jndex] == 0) {
+        row[index] = col[jndex] = true;
+      }
+    }
+  }
+  for (int index = 0; index < matrix.size(); ++index) {
+    for (int jndex = 0; jndex < matrix[0].size(); ++jndex) {
+      if (row[index] || col[jndex]) {
+        matrix[index][jndex] = 0;
+      }
+    }
+  }
+}
+
+// 螺旋矩阵
+std::vector<int> spiralOrder(const std::vector<std::vector<int>> &matrix) {
+  std::vector<int> result;
+  int rows = matrix.size();
+  int cols = matrix[0].size();
+  int left = 0;
+  int right = cols - 1;
+  int top = 0;
+  int bottom = rows - 1;
+
+  while (1) {
+    for (int index = left; index <= right; ++index) {
+      result.push_back(matrix[top][index]);
+    }
+    ++top;
+    if (top > bottom)
+      break;
+
+    for (int index = top; index <= bottom; ++index) {
+      result.push_back(matrix[index][right]);
+    }
+    --right;
+    if (left > right)
+      break;
+
+    for (int index = right; index >= left; --index) {
+      result.push_back(matrix[bottom][index]);
+    }
+    --bottom;
+    if (top > bottom)
+      break;
+
+    for (int index = bottom; index >= top; --index) {
+      result.push_back(matrix[index][left]);
+    }
+    ++left;
+    if (left > right)
+      break;
+  }
+  return result;
+}
+
+// 跳跃游戏
+bool canJump(const std::vector<int> &nums) {
+  int rightmost = 0;
+  for (int index = 0; index < nums.size(); ++index) {
+    if (index <= rightmost) {
+      rightmost = std::max(rightmost, index + nums[index]);
+      if (rightmost >= nums.size() - 1) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

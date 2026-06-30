@@ -26,5 +26,8 @@ std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &intervals);
 void rotate(std::vector<int> &nums, int k);
 std::vector<int> productExceptSelf(const std::vector<int> &nums);
 int firstMissingPositive(std::vector<int> &nums);
+void setZeroes(std::vector<std::vector<int>> &matrix);
+std::vector<int> spiralOrder(const std::vector<std::vector<int>> &matrix);
+bool canJump(const std::vector<int> &nums);
 
 #endif

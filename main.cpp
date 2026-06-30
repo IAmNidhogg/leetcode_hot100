@@ -167,5 +167,36 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<std::vector<int>> setZeroes_matrix{
+      {0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
+  setZeroes(setZeroes_matrix);
+  std::cout << "-----" << " The result of setZeroes is below " << "-----"
+            << std::endl;
+  show2dVector(setZeroes_matrix);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<std::vector<int>> spiralOrder_matrix{
+      {1, 2, 3}, {8, 9, 4}, {7, 6, 5}};
+  std::vector<int> spiralOrder_result;
+  spiralOrder_result = spiralOrder(spiralOrder_matrix);
+  std::cout << "-----" << " The result of spiralOrder is below " << "-----"
+            << std::endl;
+  showVector(spiralOrder_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> canJump_nums{3, 2, 1, 0, 4};
+  std::vector<int> canJump_nums1{2, 3, 1, 1, 4};
+  bool canJump_result;
+  bool canJump_result1;
+  canJump_result = canJump(canJump_nums);
+  canJump_result1 = canJump(canJump_nums1);
+  std::cout << "-----" << " The result of canJump is below " << "-----"
+            << std::endl;
+  std::cout << canJump_result << " " << canJump_result1 << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
