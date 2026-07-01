@@ -29,5 +29,7 @@ int firstMissingPositive(std::vector<int> &nums);
 void setZeroes(std::vector<std::vector<int>> &matrix);
 std::vector<int> spiralOrder(const std::vector<std::vector<int>> &matrix);
 bool canJump(const std::vector<int> &nums);
+void rotatePic(std::vector<std::vector<int>> &matrix);
+bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
 
 #endif

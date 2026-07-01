@@ -430,3 +430,29 @@ bool canJump(const std::vector<int> &nums) {
   }
   return false;
 }
+
+// 旋转图像
+void rotatePic(std::vector<std::vector<int>> &matrix) {
+  for (int index = 0; index < matrix.size() / 2; ++index) {
+    for (int jndex = 0; jndex < matrix.size(); ++jndex) {
+      std::swap(matrix[index][jndex], matrix[matrix.size() - index - 1][jndex]);
+    }
+  }
+  for (int index = 0; index < matrix.size(); ++index) {
+    for (int jndex = 0; jndex < index; ++jndex) {
+      std::swap(matrix[index][jndex], matrix[jndex][index]);
+    }
+  }
+}
+
+// 搜索二维矩阵
+bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target) {
+  for (const auto &row : matrix) {
+    for (int ele : row) {
+      if (ele == target) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

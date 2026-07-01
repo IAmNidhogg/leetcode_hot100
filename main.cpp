@@ -198,5 +198,28 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<std::vector<int>> rotatePic_matrix{
+      {5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
+  rotatePic(rotatePic_matrix);
+  std::cout << "-----" << " The result of rotatePic is below " << "-----"
+            << std::endl;
+  show2dVector(rotatePic_matrix);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<std::vector<int>> searchMatrix_matrix{{1, 4, 7, 11, 15},
+                                                    {2, 5, 8, 12, 19},
+                                                    {3, 6, 9, 16, 22},
+                                                    {10, 13, 14, 17, 24},
+                                                    {18, 21, 23, 26, 30}};
+  bool searchMatrix_result;
+  int searchMatrix_target = 5;
+  searchMatrix_result = searchMatrix(searchMatrix_matrix, searchMatrix_target);
+  std::cout << "-----" << " The result of searchMatrix is below " << "-----"
+            << std::endl;
+  std::cout << searchMatrix_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
