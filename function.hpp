@@ -5,6 +5,14 @@
 #include <unordered_map>
 #include <vector>
 
+// Definition for singly-linked list
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *n) : val(x), next(n) {}
+};
+
 // function
 std::vector<std::vector<int>> twoSum(const std::vector<int> &nums, int target);
 std::vector<std::vector<std::string>>
@@ -31,5 +39,7 @@ std::vector<int> spiralOrder(const std::vector<std::vector<int>> &matrix);
 bool canJump(const std::vector<int> &nums);
 void rotatePic(std::vector<std::vector<int>> &matrix);
 bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB);
+ListNode *reverseList(ListNode *head);
 
 #endif

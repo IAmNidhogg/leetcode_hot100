@@ -38,3 +38,10 @@ void show2dStringVector(const std::vector<std::vector<std::string>> &strs) {
     std::cout << std::endl;
   }
 }
+
+void showList(ListNode *head) {
+  for (ListNode *tmp = head; tmp != nullptr; tmp = tmp->next) {
+    std::cout << tmp->val << ((tmp == nullptr) ? "" : " ");
+  }
+  std::cout << std::endl;
+}

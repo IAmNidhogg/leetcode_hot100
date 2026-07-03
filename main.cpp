@@ -221,5 +221,34 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  ListNode gin_node8(5);
+  ListNode gin_node7(4, &gin_node8);
+  ListNode gin_node6(8, &gin_node7);
+  ListNode gin_node5(1, &gin_node6);
+  ListNode gin_node4(6, &gin_node5);
+  ListNode gin_node3(5, &gin_node4);
+  ListNode gin_node2(1, &gin_node6);
+  ListNode gin_node1(4, &gin_node2);
+  ListNode *getIntersectionNode_node;
+  getIntersectionNode_node = getIntersectionNode(&gin_node1, &gin_node3);
+  std::cout << "-----" << " The result of getIntersectionNode is below "
+            << "-----" << std::endl;
+  std::cout << getIntersectionNode_node->val << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode rl_node5(5);
+  ListNode rl_node4(4, &rl_node5);
+  ListNode rl_node3(3, &rl_node4);
+  ListNode rl_node2(2, &rl_node3);
+  ListNode rl_node1(1, &rl_node2);
+  ListNode *reverseList_head;
+  reverseList_head = reverseList(&rl_node1);
+  std::cout << "-----" << " The result of reverseList is below " << "-----"
+            << std::endl;
+  showList(reverseList_head);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

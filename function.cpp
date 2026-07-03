@@ -456,3 +456,33 @@ bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target) {
   }
   return false;
 }
+
+// 相交链表
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+  ListNode *ptr1 = headA;
+  ListNode *ptr2 = headB;
+
+  while (ptr1 != ptr2) {
+    ptr1 = (ptr1 == nullptr) ? headB : ptr1->next;
+    ptr2 = (ptr2 == nullptr) ? headA : ptr2->next;
+  }
+  return ptr1;
+}
+
+// 反转链表
+ListNode *reverseList(ListNode *head) {
+  if (head == nullptr || head->next == nullptr) {
+    return head;
+  }
+  ListNode *left = nullptr;
+  ListNode *right = head;
+  ListNode *tmp = head;
+
+  while (right != nullptr) {
+    tmp = right;
+    right = right->next;
+    tmp->next = left;
+    left = tmp;
+  }
+  return left;
+}
