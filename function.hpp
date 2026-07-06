@@ -41,5 +41,8 @@ void rotatePic(std::vector<std::vector<int>> &matrix);
 bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB);
 ListNode *reverseList(ListNode *head);
+bool isPalindrome(ListNode *head);
+bool hasCycle(ListNode *head);
+ListNode *detectCycle(ListNode *head);
 
 #endif

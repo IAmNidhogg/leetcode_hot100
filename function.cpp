@@ -486,3 +486,55 @@ ListNode *reverseList(ListNode *head) {
   }
   return left;
 }
+
+// 回文链表
+bool isPalindrome(ListNode *head) {
+  std::vector<int> comp;
+  while (head != nullptr) {
+    comp.push_back(head->val);
+    head = head->next;
+  }
+
+  for (int index = 0, jndex = comp.size() - 1; index < jndex;
+       ++index, --jndex) {
+    if (comp[index] != comp[jndex]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// 环形链表
+bool hasCycle(ListNode *head) {
+  ListNode *slow = head;
+  ListNode *fast = head;
+
+  while (fast != nullptr && fast->next != nullptr) {
+    slow = slow->next;
+    fast = fast->next->next;
+    if (slow == fast) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// 环形链表II
+ListNode *detectCycle(ListNode *head) {
+  ListNode *slow = head;
+  ListNode *fast = head;
+
+  while (fast != nullptr && fast->next != nullptr) {
+    slow = slow->next;
+    fast = fast->next->next;
+    if (slow == fast) {
+      ListNode *tmp = head;
+      while (tmp != slow) {
+        tmp = tmp->next;
+        slow = slow->next;
+      }
+      return tmp;
+    }
+  }
+  return nullptr;
+}

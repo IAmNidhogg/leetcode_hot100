@@ -250,5 +250,50 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  ListNode pr_node6(9);
+  ListNode pr_node5(8, &pr_node6);
+  ListNode pr_node4(5, &pr_node5);
+  ListNode pr_node3(5, &pr_node4);
+  ListNode pr_node2(8, &pr_node3);
+  ListNode pr_node1(9, &pr_node2);
+  bool isPalindrome_result;
+  isPalindrome_result = isPalindrome(&pr_node1);
+  std::cout << " ----- " << " The result of isPalindrome is below " << "-----"
+            << std::endl;
+  showList(&pr_node1);
+  std::cout << isPalindrome_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode hc_node6(1);
+  ListNode hc_node5(1, &hc_node6);
+  ListNode hc_node4(2, &hc_node5);
+  ListNode hc_node3(5, &hc_node4);
+  ListNode hc_node2(8, &hc_node3);
+  ListNode hc_node1(9, &hc_node2);
+  hc_node6.next = &hc_node3;
+  bool hasCycle_result;
+  hasCycle_result = hasCycle(&hc_node1);
+  std::cout << "-----" << " The result of hasCycle is below " << "-----"
+            << std::endl;
+  std::cout << hasCycle_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode dc_node6(1);
+  ListNode dc_node5(1, &dc_node6);
+  ListNode dc_node4(2, &dc_node5);
+  ListNode dc_node3(5, &dc_node4);
+  ListNode dc_node2(8, &dc_node3);
+  ListNode dc_node1(9, &dc_node2);
+  dc_node6.next = &dc_node3;
+  ListNode *detectCycle_result;
+  detectCycle_result = detectCycle(&dc_node1);
+  std::cout << "-----" << " The result of hasCycle is below " << "-----"
+            << std::endl;
+  std::cout << detectCycle_result->val << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
