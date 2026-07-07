@@ -538,3 +538,67 @@ ListNode *detectCycle(ListNode *head) {
   }
   return nullptr;
 }
+
+// 合并两个有序链表
+ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
+  if (list1 == nullptr) {
+    return list2;
+  } else if (list2 == nullptr) {
+    return list1;
+  } else if (list1->val < list2->val) {
+    list1->next = mergeTwoLists(list1->next, list2);
+    return list1;
+  } else {
+    list2->next = mergeTwoLists(list1, list2->next);
+    return list2;
+  }
+}
+
+// 两数相加
+ListNode *addTwoNumbers(ListNode *list1, ListNode *list2) {
+  ListNode *head = nullptr;
+  ListNode *tail = nullptr;
+  int carry = 0;
+
+  while (list1 || list2) {
+    int l1 = list1 ? list1->val : 0;
+    int l2 = list2 ? list2->val : 0;
+    int sum = l1 + l2 + carry;
+
+    if (!head) {
+      head = tail = new ListNode(sum % 10);
+    } else {
+      tail->next = new ListNode(sum % 10);
+      tail = tail->next;
+    }
+    carry = sum / 10;
+
+    if (list1)
+      list1 = list1->next;
+    if (list2)
+      list2 = list2->next;
+  }
+  if (carry > 0)
+    tail->next = new ListNode(carry);
+  return head;
+}
+
+// 删除链表的倒数第N个节点
+ListNode *removeNthFromEnd(ListNode *head, int n) {
+  ListNode *tmp = head;
+  int count = 0;
+  while (tmp) {
+    ++count;
+    tmp = tmp->next;
+  }
+
+  ListNode *dummy = new ListNode(0, head);
+  tmp = dummy;
+  for (int index = 0; index < count - n; ++index) {
+    tmp = tmp->next;
+  }
+  tmp->next = tmp->next->next;
+  ListNode *ans = dummy->next;
+  delete dummy;
+  return ans;
+}

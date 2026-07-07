@@ -295,5 +295,46 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  ListNode mt_node3(4);
+  ListNode mt_node2(2, &mt_node3);
+  ListNode mt_node1(1, &mt_node2);
+  ListNode mt_node6(4);
+  ListNode mt_node5(3, &mt_node6);
+  ListNode mt_node4(1, &mt_node5);
+  ListNode *mergeTwoLists_result;
+  mergeTwoLists_result = mergeTwoLists(&mt_node1, &mt_node4);
+  std::cout << "-----" << " The result of mergeTwoLists is below " << "-----"
+            << std::endl;
+  showList(mergeTwoLists_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode atn_node3(3);
+  ListNode atn_node2(4, &atn_node3);
+  ListNode atn_node1(2, &atn_node2);
+  ListNode atn_node6(4);
+  ListNode atn_node5(6, &atn_node6);
+  ListNode atn_node4(5, &atn_node5);
+  ListNode *addTwoNumbers_result;
+  addTwoNumbers_result = addTwoNumbers(&atn_node1, &atn_node4);
+  std::cout << "-----" << " The result of addTwoNumbers is below " << "-----"
+            << std::endl;
+  showList(addTwoNumbers_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode rnfe_node5(5);
+  ListNode rnfe_node4(4, &rnfe_node5);
+  ListNode rnfe_node3(3, &rnfe_node4);
+  ListNode rnfe_node2(2, &rnfe_node3);
+  ListNode rnfe_node1(1, &rnfe_node2);
+  ListNode *removeNthFromEnd_result;
+  removeNthFromEnd_result = removeNthFromEnd(&rnfe_node1, 2);
+  std::cout << "-----" << " The result of removeNthFromEnd is below " << "-----"
+            << std::endl;
+  showList(removeNthFromEnd_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

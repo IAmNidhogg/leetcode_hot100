@@ -44,5 +44,8 @@ ListNode *reverseList(ListNode *head);
 bool isPalindrome(ListNode *head);
 bool hasCycle(ListNode *head);
 ListNode *detectCycle(ListNode *head);
+ListNode *mergeTwoLists(ListNode *list1, ListNode *list2);
+ListNode *addTwoNumbers(ListNode *list1, ListNode *list2);
+ListNode *removeNthFromEnd(ListNode *head, int n);
 
 #endif
