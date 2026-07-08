@@ -6,6 +6,7 @@
 #include <set>
 #include <stack>
 #include <string>
+#include <tuple>
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
@@ -601,4 +602,51 @@ ListNode *removeNthFromEnd(ListNode *head, int n) {
   ListNode *ans = dummy->next;
   delete dummy;
   return ans;
+}
+
+// 两两交换链表中的节点
+ListNode *swapPairs(ListNode *head) {
+  if (head == nullptr || head->next == nullptr) {
+    return head;
+  }
+  ListNode *newhead = head->next;
+  head->next = swapPairs(newhead->next);
+  newhead->next = head;
+  return newhead;
+}
+
+// K个一组翻转链表
+std::pair<ListNode *, ListNode *> myReverse(ListNode *head, ListNode *tail) {
+  ListNode *prev = tail->next;
+  ListNode *p = head;
+  while (prev != tail) {
+    ListNode *nex = p->next;
+    p->next = prev;
+    prev = p;
+    p = nex;
+  }
+  return {tail, head};
+}
+
+ListNode *reverseKGroup(ListNode *head, int k) {
+  ListNode *hair = new ListNode(0, head);
+  ListNode *pre = hair;
+
+  while (head) {
+    ListNode *tail = pre;
+    for (int index = 0; index < k; ++index) {
+      tail = tail->next;
+      if (!tail) {
+        return hair->next;
+      }
+    }
+
+    ListNode *nex = tail->next;
+    std::tie(head, tail) = myReverse(head, tail);
+    pre->next = head;
+    tail->next = nex;
+    pre = tail;
+    head = tail->next;
+  }
+  return hair->next;
 }

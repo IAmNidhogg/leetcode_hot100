@@ -336,5 +336,32 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  ListNode sp_node6(6);
+  ListNode sp_node5(5, &sp_node6);
+  ListNode sp_node4(4, &sp_node5);
+  ListNode sp_node3(3, &sp_node4);
+  ListNode sp_node2(2, &sp_node3);
+  ListNode sp_node1(1, &sp_node2);
+  ListNode *swapPairs_result;
+  swapPairs_result = swapPairs(&sp_node1);
+  std::cout << "-----" << " The result of swapPairs is below " << "-----"
+            << std::endl;
+  showList(swapPairs_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode rkg_node5(5);
+  ListNode rkg_node4(4, &rkg_node5);
+  ListNode rkg_node3(3, &rkg_node4);
+  ListNode rkg_node2(2, &rkg_node3);
+  ListNode rkg_node1(1, &rkg_node2);
+  ListNode *reverseKGroup_result;
+  reverseKGroup_result = reverseKGroup(&rkg_node1, 2);
+  std::cout << "-----" << " The result of reverseKGroup is below " << "-----"
+            << std::endl;
+  showList(reverseKGroup_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

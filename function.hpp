@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 // Definition for singly-linked list
@@ -47,5 +48,8 @@ ListNode *detectCycle(ListNode *head);
 ListNode *mergeTwoLists(ListNode *list1, ListNode *list2);
 ListNode *addTwoNumbers(ListNode *list1, ListNode *list2);
 ListNode *removeNthFromEnd(ListNode *head, int n);
+ListNode *swapPairs(ListNode *head);
+std::pair<ListNode *, ListNode *> myReverse(ListNode *head, ListNode *tail);
+ListNode *reverseKGroup(ListNode *head, int k);
 
 #endif
