@@ -363,5 +363,40 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  Node crl_node5(1);
+  Node crl_node4(10);
+  Node crl_node3(11);
+  Node crl_node2(13);
+  Node crl_node1(7);
+  crl_node1.next = &crl_node2;
+  crl_node2.next = &crl_node3;
+  crl_node3.next = &crl_node4;
+  crl_node4.next = &crl_node5;
+  crl_node1.random = nullptr;
+  crl_node2.random = &crl_node1;
+  crl_node3.random = &crl_node5;
+  crl_node4.random = &crl_node3;
+  crl_node5.random = &crl_node1;
+  Node *copyRandomList_result;
+  copyRandomList_result = copyRandomList(&crl_node1);
+  std::cout << "-----" << " The result of copyRandomList is below " << "-----"
+            << std::endl;
+  showRandomList(copyRandomList_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  ListNode sl_node5(1);
+  ListNode sl_node4(2, &sl_node5);
+  ListNode sl_node3(3, &sl_node4);
+  ListNode sl_node2(4, &sl_node3);
+  ListNode sl_node1(5, &sl_node2);
+  ListNode *sortList_result;
+  sortList_result = sortList(&sl_node1);
+  std::cout << "-----" << " The result of sortList is below " << "-----"
+            << std::endl;
+  showList(sortList_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

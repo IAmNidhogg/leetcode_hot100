@@ -14,6 +14,20 @@ struct ListNode {
   ListNode(int x, ListNode *n) : val(x), next(n) {}
 };
 
+// Definition for a Node
+class Node {
+public:
+  int val;
+  Node *next;
+  Node *random;
+
+  Node(int val_) {
+    val = val_;
+    next = nullptr;
+    random = nullptr;
+  }
+};
+
 // function
 std::vector<std::vector<int>> twoSum(const std::vector<int> &nums, int target);
 std::vector<std::vector<std::string>>
@@ -51,5 +65,9 @@ ListNode *removeNthFromEnd(ListNode *head, int n);
 ListNode *swapPairs(ListNode *head);
 std::pair<ListNode *, ListNode *> myReverse(ListNode *head, ListNode *tail);
 ListNode *reverseKGroup(ListNode *head, int k);
+Node *copyRandomListHelper(Node *head,
+                           std::unordered_map<Node *, Node *> &cache);
+Node *copyRandomList(Node *head);
+ListNode *sortList(ListNode *head);
 
 #endif

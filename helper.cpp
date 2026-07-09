@@ -45,3 +45,18 @@ void showList(ListNode *head) {
   }
   std::cout << std::endl;
 }
+
+void showRandomList(Node *head) {
+  for (Node *tmp = head; tmp != nullptr; tmp = tmp->next) {
+    std::cout << tmp->val;
+    if (tmp->random != nullptr) {
+      std::cout << "(" << tmp->random->val << ")";
+    } else {
+      std::cout << "(null)";
+    }
+    if (tmp->next != nullptr) {
+      std::cout << " ";
+    }
+  }
+  std::cout << std::endl;
+}

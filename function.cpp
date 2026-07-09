@@ -650,3 +650,40 @@ ListNode *reverseKGroup(ListNode *head, int k) {
   }
   return hair->next;
 }
+
+// 随机链表的复制
+Node *copyRandomListHelper(Node *head,
+                           std::unordered_map<Node *, Node *> &cache) {
+  if (head == nullptr) {
+    return nullptr;
+  }
+  if (!cache.count(head)) {
+    Node *newhead = new Node(head->val);
+    cache[head] = newhead;
+    newhead->next = copyRandomListHelper(head->next, cache);
+    newhead->random = copyRandomListHelper(head->random, cache);
+  }
+  return cache[head];
+}
+
+Node *copyRandomList(Node *head) {
+  std::unordered_map<Node *, Node *> cachedNode;
+  return copyRandomListHelper(head, cachedNode);
+}
+
+// 排序链表
+ListNode *sortList(ListNode *head) {
+  std::vector<int> nums;
+  for (ListNode *tmp = head; tmp != nullptr; tmp = tmp->next) {
+    nums.push_back(tmp->val);
+  }
+  std::sort(nums.begin(), nums.end());
+  int index = 0;
+  ListNode *tmp = head;
+  while (tmp != nullptr) {
+    tmp->val = nums[index];
+    ++index;
+    tmp = tmp->next;
+  }
+  return head;
+}
