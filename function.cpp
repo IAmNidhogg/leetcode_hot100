@@ -687,3 +687,12 @@ ListNode *sortList(ListNode *head) {
   }
   return head;
 }
+
+// 合并K个升序列表
+ListNode *mergeKLists(std::vector<ListNode *> &lists) {
+  ListNode *ans = nullptr;
+  for (int index = 0; index < lists.size(); ++index) {
+    ans = mergeTwoLists(ans, lists[index]);
+  }
+  return ans;
+}

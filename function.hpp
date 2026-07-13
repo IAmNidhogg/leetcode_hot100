@@ -69,5 +69,93 @@ Node *copyRandomListHelper(Node *head,
                            std::unordered_map<Node *, Node *> &cache);
 Node *copyRandomList(Node *head);
 ListNode *sortList(ListNode *head);
+ListNode *mergeKLists(std::vector<ListNode *> &lists);
+
+class LRUCache {
+private:
+  struct doublelink {
+    int key;
+    int value;
+    doublelink *pre;
+    doublelink *nex;
+    doublelink() : key(0), value(0), pre(nullptr), nex(nullptr) {}
+    doublelink(int k, int v) : key(k), value(v), pre(nullptr), nex(nullptr) {}
+  };
+  doublelink *head;
+  doublelink *tail;
+  int cap;
+  int size;
+  std::unordered_map<int, doublelink *> map;
+
+public:
+  LRUCache(int capacity) : cap(capacity), size(0) {
+    head = new doublelink;
+    tail = new doublelink;
+    head->nex = tail;
+    tail->pre = head;
+  }
+
+  ~LRUCache() {
+    doublelink *curr = head;
+    while (curr != nullptr) {
+      doublelink *next = curr->nex;
+      delete curr;
+      curr = next;
+    }
+  }
+
+  void remove(doublelink *node) {
+    node->pre->nex = node->nex;
+    node->nex->pre = node->pre;
+  }
+
+  void addHead(doublelink *node) {
+    node->nex = head->nex;
+    head->nex->pre = node;
+    head->nex = node;
+    node->pre = head;
+  }
+
+  void moveHead(doublelink *node) {
+    remove(node);
+    addHead(node);
+  }
+
+  doublelink *removeTail() {
+    doublelink *tmp = tail->pre;
+    remove(tmp);
+    return tmp;
+  }
+
+  int get(int key) {
+    auto it = map.find(key);
+    if (it == map.end()) {
+      return -1;
+    }
+    doublelink *tmp = it->second;
+    moveHead(tmp);
+    return tmp->value;
+  }
+
+  void put(int key, int value) {
+    auto it = map.find(key);
+    if (it == map.end()) {
+      if (size == cap) {
+        doublelink *newnode = removeTail();
+        map.erase(newnode->key);
+        delete newnode;
+        --size;
+      }
+      doublelink *test = new doublelink(key, value);
+      addHead(test);
+      map[key] = test;
+      ++size;
+    } else {
+      doublelink *tmp = it->second;
+      tmp->value = value;
+      moveHead(tmp);
+    }
+  }
+};
 
 #endif

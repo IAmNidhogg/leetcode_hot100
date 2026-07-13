@@ -398,5 +398,37 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  ListNode mkl_node3(5);
+  ListNode mkl_node2(4, &mkl_node3);
+  ListNode mkl_node1(1, &mkl_node2);
+  ListNode mkl_node6(4);
+  ListNode mkl_node5(3, &mkl_node6);
+  ListNode mkl_node4(1, &mkl_node5);
+  ListNode mkl_node8(6);
+  ListNode mkl_node7(2, &mkl_node8);
+  std::vector<ListNode *> mergeKLists_lists{&mkl_node1, &mkl_node4, &mkl_node7};
+  ListNode *mergeKLists_result;
+  mergeKLists_result = mergeKLists(mergeKLists_lists);
+  std::cout << "-----" << " The result of mergeKLists is below " << "-----"
+            << std::endl;
+  showList(mergeKLists_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  LRUCache lru(2);
+  lru.put(1, 1);
+  lru.put(2, 2);
+  std::cout << "-----" << " The result of LRUCache is below " << "-----"
+            << std::endl;
+  std::cout << lru.get(1) << std::endl;
+  lru.put(3, 3);
+  std::cout << lru.get(2) << std::endl;
+  lru.put(4, 4);
+  std::cout << lru.get(1) << std::endl;
+  std::cout << lru.get(3) << std::endl;
+  std::cout << lru.get(4) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
