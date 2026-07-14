@@ -696,3 +696,82 @@ ListNode *mergeKLists(std::vector<ListNode *> &lists) {
   }
   return ans;
 }
+
+// 二叉树的中序遍历
+void inorderTraversalHelper(std::vector<int> &result, TreeNode *root) {
+  if (root == nullptr) {
+    return;
+  }
+  inorderTraversalHelper(result, root->left);
+  result.push_back(root->val);
+  inorderTraversalHelper(result, root->right);
+}
+
+std::vector<int> inorderTraversal(TreeNode *root) {
+  std::vector<int> result;
+  inorderTraversalHelper(result, root);
+  return result;
+}
+
+// 二叉树的最大深度
+int maxDepth(TreeNode *root) {
+  if (root == nullptr) {
+    return 0;
+  }
+  int leftdepth = maxDepth(root->left);
+  int rightdepth = maxDepth(root->right);
+  return std::max(leftdepth, rightdepth) + 1;
+}
+
+// 翻转二叉树
+TreeNode *invertTree(TreeNode *root) {
+  if (root == nullptr) {
+    return nullptr;
+  }
+  TreeNode *tmp = root->left;
+  root->left = root->right;
+  root->right = tmp;
+
+  invertTree(root->left);
+  invertTree(root->right);
+  return root;
+}
+
+// 对称二叉树
+bool isSymmetricHelper(TreeNode *left, TreeNode *right) {
+  if (left == nullptr && right == nullptr) {
+    return true;
+  }
+  if (left == nullptr || right == nullptr) {
+    return false;
+  }
+  if (left->val != right->val) {
+    return false;
+  }
+  return isSymmetricHelper(left->left, right->right) &&
+         isSymmetricHelper(left->right, right->left);
+}
+
+bool isSymmetric(TreeNode *root) {
+  if (root == nullptr) {
+    return true;
+  }
+  return isSymmetricHelper(root->left, root->right);
+}
+
+// 二叉树的直径
+int diameterOfBinaryTreeHelper(TreeNode *root, int &max) {
+  if (root == nullptr) {
+    return 0;
+  }
+  int leftheight = diameterOfBinaryTreeHelper(root->left, max);
+  int rightheight = diameterOfBinaryTreeHelper(root->right, max);
+  max = std::max(leftheight + rightheight, max);
+  return std::max(leftheight, rightheight) + 1;
+}
+
+int diameterOfBinaryTree(TreeNode *root) {
+  int maxheight = 0;
+  maxheight = diameterOfBinaryTreeHelper(root, maxheight);
+  return maxheight;
+}

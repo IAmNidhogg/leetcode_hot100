@@ -430,5 +430,75 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  TreeNode *it_root = new TreeNode(1);
+  it_root->left = new TreeNode(2);
+  it_root->right = new TreeNode(3);
+  std::vector<int> inorderTraversal_result;
+  inorderTraversal_result = inorderTraversal(it_root);
+  std::cout << "-----" << " The result of inorderTraversal is below " << "-----"
+            << std::endl;
+  showVector(inorderTraversal_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete it_root->left;
+  delete it_root->right;
+  delete it_root;
+
+  TreeNode *md_root = new TreeNode(1);
+  md_root->left = new TreeNode(2);
+  md_root->right = new TreeNode(3);
+  int maxDepth_result;
+  maxDepth_result = maxDepth(md_root);
+  std::cout << "-----" << " The result of maxDepth is below " << "-----"
+            << std::endl;
+  std::cout << maxDepth_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete md_root->left;
+  delete md_root->right;
+  delete md_root;
+
+  TreeNode *itr_root = new TreeNode(1);
+  itr_root->left = new TreeNode(2);
+  itr_root->right = new TreeNode(3);
+  TreeNode *invertTree_root;
+  invertTree_root = invertTree(itr_root);
+  std::cout << "-----" << " The result of invertTree is below " << "-----"
+            << std::endl;
+  showVector(inorderTraversal(invertTree_root));
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete itr_root->left;
+  delete itr_root->right;
+  delete itr_root;
+
+  TreeNode *is_root = new TreeNode(1);
+  is_root->left = new TreeNode(2);
+  is_root->right = new TreeNode(3);
+  bool isSymmetric_result;
+  isSymmetric_result = isSymmetric(is_root);
+  std::cout << "-----" << " The result of isSymmetric is below " << "-----"
+            << std::endl;
+  std::cout << isSymmetric_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete is_root->left;
+  delete is_root->right;
+  delete is_root;
+
+  TreeNode *dobt_root = new TreeNode(1);
+  dobt_root->left = new TreeNode(2);
+  dobt_root->right = new TreeNode(3);
+  int diameterOfBinaryTree_result;
+  diameterOfBinaryTree_result = diameterOfBinaryTree(dobt_root);
+  std::cout << "-----" << " The result of diameterOfBinaryTree is below "
+            << "-----" << std::endl;
+  std::cout << diameterOfBinaryTree_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete dobt_root->left;
+  delete dobt_root->right;
+  delete dobt_root;
+
   return 0;
 }
