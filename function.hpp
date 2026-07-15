@@ -176,5 +176,9 @@ TreeNode *invertTree(TreeNode *root);
 bool isSymmetricHelper(TreeNode *left, TreeNode *right);
 bool isSymmetric(TreeNode *root);
 int diameterOfBinaryTree(TreeNode *root);
+std::vector<std::vector<int>> levelOrder(TreeNode *root);
+TreeNode *sortedArrayToBSTHelper(const std::vector<int> &nums, int left,
+                                 int right);
+TreeNode *sortedArrayToBST(const std::vector<int> &nums);
 
 #endif

@@ -500,5 +500,28 @@ int main() {
   delete dobt_root->right;
   delete dobt_root;
 
+  TreeNode *lo_root = new TreeNode(1);
+  lo_root->left = new TreeNode(2);
+  lo_root->right = new TreeNode(3);
+  std::vector<std::vector<int>> levelOrder_result;
+  levelOrder_result = levelOrder(lo_root);
+  std::cout << "-----" << " The result of levelOrder is below "
+            << "-----" << std::endl;
+  show2dVector(levelOrder_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete lo_root->left;
+  delete lo_root->right;
+  delete lo_root;
+
+  std::vector<int> sortedArrayToBST_nums{-10, -3, 0, 5, 9};
+  TreeNode *sortedArrayToBST_root;
+  sortedArrayToBST_root = sortedArrayToBST(sortedArrayToBST_nums);
+  std::cout << "-----" << " The result of sortedArrayToBST is below " << "-----"
+            << std::endl;
+  show2dVector(levelOrder(sortedArrayToBST_root));
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

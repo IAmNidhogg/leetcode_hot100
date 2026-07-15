@@ -775,3 +775,46 @@ int diameterOfBinaryTree(TreeNode *root) {
   maxheight = diameterOfBinaryTreeHelper(root, maxheight);
   return maxheight;
 }
+
+// 二叉树的层序遍历
+std::vector<std::vector<int>> levelOrder(TreeNode *root) {
+  std::vector<std::vector<int>> result;
+  if (root == nullptr) {
+    return result;
+  }
+  std::queue<TreeNode *> q;
+  q.push(root);
+
+  while (!q.empty()) {
+    std::vector<int> t;
+    int size = q.size();
+    for (int index = 0; index < size; ++index) {
+      TreeNode *tmp = q.front();
+      q.pop();
+      if (tmp->left != nullptr)
+        q.push(tmp->left);
+      if (tmp->right != nullptr)
+        q.push(tmp->right);
+      t.emplace_back(tmp->val);
+    }
+    result.emplace_back(std::move(t));
+  }
+  return result;
+}
+
+// 将有序数组转换为二叉搜索树
+TreeNode *sortedArrayToBSTHelper(const std::vector<int> &nums, int left,
+                                 int right) {
+  if (left > right)
+    return nullptr;
+
+  int mid = (left + right) / 2;
+  TreeNode *root = new TreeNode(nums[mid]);
+  root->left = sortedArrayToBSTHelper(nums, left, mid - 1);
+  root->right = sortedArrayToBSTHelper(nums, mid + 1, right);
+  return root;
+}
+
+TreeNode *sortedArrayToBST(const std::vector<int> &nums) {
+  return sortedArrayToBSTHelper(nums, 0, nums.size() - 1);
+}
