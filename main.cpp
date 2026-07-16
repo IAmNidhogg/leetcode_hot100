@@ -570,5 +570,25 @@ int main() {
   delete rsv_root->right->right;
   delete rsv_root->right;
   delete rsv_root;
+
+  TreeNode *f_root = new TreeNode(1);
+  f_root->left = new TreeNode(2);
+  f_root->left->left = new TreeNode(3);
+  f_root->left->right = new TreeNode(4);
+  f_root->right = new TreeNode(5);
+  f_root->right->right = new TreeNode(6);
+  flatten(f_root);
+  std::cout << "-----" << " The result of rightSideView is below "
+            << "-----" << std::endl;
+  show2dVector(levelOrder(f_root));
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete f_root->right->right->right->right->right;
+  delete f_root->right->right->right->right;
+  delete f_root->right->right->right;
+  delete f_root->right->right;
+  delete f_root->right;
+  delete f_root;
+
   return 0;
 }

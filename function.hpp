@@ -184,5 +184,6 @@ bool isValidBSTHelper(TreeNode *root, int low, int high);
 bool isValidBST(TreeNode *root);
 int kthSmallest(TreeNode *root, int k);
 std::vector<int> rightSideView(TreeNode *root);
+void flatten(TreeNode *root);
 
 #endif

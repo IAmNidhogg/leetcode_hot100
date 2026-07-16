@@ -863,3 +863,25 @@ std::vector<int> rightSideView(TreeNode *root) {
   }
   return result;
 }
+
+// 二叉树展开为链表
+void flattenHelper(TreeNode *root, std::vector<TreeNode *> &tree) {
+  if (root == nullptr) {
+    return;
+  }
+  tree.emplace_back(root);
+  flattenHelper(root->left, tree);
+  flattenHelper(root->right, tree);
+}
+
+void flatten(TreeNode *root) {
+  if (root == nullptr)
+    return;
+  std::vector<TreeNode *> tree;
+  flattenHelper(root, tree);
+  for (int index = 0; index < tree.size() - 1; ++index) {
+    TreeNode *tmp = tree[index];
+    tmp->left = nullptr;
+    tmp->right = tree[index + 1];
+  }
+}
