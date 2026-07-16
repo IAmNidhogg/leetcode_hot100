@@ -818,3 +818,48 @@ TreeNode *sortedArrayToBSTHelper(const std::vector<int> &nums, int left,
 TreeNode *sortedArrayToBST(const std::vector<int> &nums) {
   return sortedArrayToBSTHelper(nums, 0, nums.size() - 1);
 }
+
+// 验证二叉搜索树
+bool isValidBSTHelper(TreeNode *root, int low, int high) {
+  if (root == nullptr) {
+    return true;
+  }
+  if (root->val <= low || root->val >= high) {
+    return false;
+  }
+  return isValidBSTHelper(root->left, low, root->val) &&
+         isValidBSTHelper(root->right, root->val, high);
+}
+
+bool isValidBST(TreeNode *root) {
+  return isValidBSTHelper(root, INT_MIN, INT_MAX);
+}
+
+// 二叉搜索树中第K小的元素
+int kthSmallest(TreeNode *root, int k) {
+  std::stack<TreeNode *> stack;
+  while (root != nullptr || stack.size() > 0) {
+    while (root != nullptr) {
+      stack.push(root);
+      root = root->left;
+    }
+    root = stack.top();
+    stack.pop();
+    --k;
+    if (k == 0)
+      break;
+    root = root->right;
+  }
+  return root->val;
+}
+
+// 二叉树的右视图
+std::vector<int> rightSideView(TreeNode *root) {
+  std::vector<std::vector<int>> lv_result;
+  std::vector<int> result;
+  lv_result = levelOrder(root);
+  for (int index = 0; index < lv_result.size(); ++index) {
+    result.push_back(lv_result[index].back());
+  }
+  return result;
+}

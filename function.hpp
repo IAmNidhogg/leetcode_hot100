@@ -180,5 +180,9 @@ std::vector<std::vector<int>> levelOrder(TreeNode *root);
 TreeNode *sortedArrayToBSTHelper(const std::vector<int> &nums, int left,
                                  int right);
 TreeNode *sortedArrayToBST(const std::vector<int> &nums);
+bool isValidBSTHelper(TreeNode *root, int low, int high);
+bool isValidBST(TreeNode *root);
+int kthSmallest(TreeNode *root, int k);
+std::vector<int> rightSideView(TreeNode *root);
 
 #endif

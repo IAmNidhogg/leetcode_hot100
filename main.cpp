@@ -523,5 +523,52 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  TreeNode *ivb_root = new TreeNode(2);
+  ivb_root->left = new TreeNode(1);
+  ivb_root->right = new TreeNode(3);
+  bool isValidBST_result;
+  isValidBST_result = isValidBST(ivb_root);
+  std::cout << "-----" << " The result of isValidBST is below "
+            << "-----" << std::endl;
+  std::cout << isValidBST_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete ivb_root->left;
+  delete ivb_root->right;
+  delete ivb_root;
+
+  TreeNode *ks_root = new TreeNode(3);
+  ks_root->left = new TreeNode(1);
+  ks_root->left->right = new TreeNode(2);
+  ks_root->right = new TreeNode(4);
+  int kthSmallest_result;
+  kthSmallest_result = kthSmallest(ks_root, 2);
+  std::cout << "-----" << " The result of kthSmallest is below "
+            << "-----" << std::endl;
+  std::cout << kthSmallest_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete ks_root->left->right;
+  delete ks_root->left;
+  delete ks_root->right;
+  delete ks_root;
+
+  TreeNode *rsv_root = new TreeNode(1);
+  rsv_root->left = new TreeNode(2);
+  rsv_root->left->right = new TreeNode(5);
+  rsv_root->right = new TreeNode(3);
+  rsv_root->right->right = new TreeNode(4);
+  std::vector<int> rightSideView_result;
+  rightSideView_result = rightSideView(rsv_root);
+  std::cout << "-----" << " The result of rightSideView is below "
+            << "-----" << std::endl;
+  showVector(rightSideView_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete rsv_root->left->right;
+  delete rsv_root->left;
+  delete rsv_root->right->right;
+  delete rsv_root->right;
+  delete rsv_root;
   return 0;
 }
