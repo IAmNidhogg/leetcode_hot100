@@ -590,5 +590,57 @@ int main() {
   delete f_root->right;
   delete f_root;
 
+  std::vector<int> buildTree_preorder{3, 9, 20, 15, 7};
+  std::vector<int> buildTree_inorder{9, 3, 15, 20, 7};
+  TreeNode *buildTree_root;
+  buildTree_root = buildTree(buildTree_preorder, buildTree_inorder);
+  std::cout << "-----" << " The result of buildTree is below " << "-----"
+            << std::endl;
+  show2dVector(levelOrder(buildTree_root));
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  TreeNode *hps_root = new TreeNode(2);
+  hps_root->left = new TreeNode(1);
+  hps_root->right = new TreeNode(3);
+  bool hasPathSum_result;
+  hasPathSum_result = hasPathSum(hps_root, 5);
+  std::cout << "-----" << " The result of hasPathSum is below "
+            << "-----" << std::endl;
+  std::cout << hasPathSum_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete hps_root->left;
+  delete hps_root->right;
+  delete hps_root;
+
+  TreeNode *ps_root = new TreeNode(5);
+  ps_root->left = new TreeNode(4);
+  ps_root->right = new TreeNode(8);
+  ps_root->left->left = new TreeNode(11);
+  ps_root->right->left = new TreeNode(13);
+  ps_root->right->right = new TreeNode(4);
+  ps_root->left->left->left = new TreeNode(7);
+  ps_root->left->left->right = new TreeNode(2);
+  ps_root->right->right->left = new TreeNode(5);
+  ps_root->right->right->right = new TreeNode(1);
+  std::vector<std::vector<int>> pathSum_result;
+  pathSum_result = pathSum(ps_root, 22);
+  std::cout << "-----" << " The result of pathSum is below " << "-----"
+            << std::endl;
+  show2dVector(pathSum_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete ps_root->left->left->left;
+  delete ps_root->left->left->right;
+  delete ps_root->left->left;
+  delete ps_root->left;
+  delete ps_root->right->left;
+  delete ps_root->right->right->left;
+  delete ps_root->right->right->right;
+  delete ps_root->right->right;
+  delete ps_root->right;
+  delete ps_root;
+
   return 0;
 }

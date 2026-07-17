@@ -185,5 +185,18 @@ bool isValidBST(TreeNode *root);
 int kthSmallest(TreeNode *root, int k);
 std::vector<int> rightSideView(TreeNode *root);
 void flatten(TreeNode *root);
+TreeNode *buildTreeHelper(const std::vector<int> &preorder,
+                          const std::vector<int> &inorder, int preorder_left,
+                          int preorder_right, int inorder_left,
+                          int inorder_right,
+                          std::unordered_map<int, int> &umap);
+TreeNode *buildTree(const std::vector<int> &preorder,
+                    const std::vector<int> &inorder);
+bool hasPathSum(TreeNode *root, int target);
+void pathSumHelper(TreeNode *root, int target,
+                   std::vector<std::vector<int>> &result,
+                   std::vector<int> &path);
+std::vector<std::vector<int>> pathSum(TreeNode *root, int target);
+int pathSumIII(TreeNode *root, int target);
 
 #endif

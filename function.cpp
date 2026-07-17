@@ -885,3 +885,81 @@ void flatten(TreeNode *root) {
     tmp->right = tree[index + 1];
   }
 }
+
+// 从前序与中序遍历序列构造二叉树
+TreeNode *buildTreeHelper(const std::vector<int> &preorder,
+                          const std::vector<int> &inorder, int preorder_left,
+                          int preorder_right, int inorder_left,
+                          int inorder_right,
+                          std::unordered_map<int, int> &umap) {
+  if (preorder_left > preorder_right)
+    return nullptr;
+  int preorder_root = preorder_left;
+  int inorder_root = umap[preorder[preorder_root]];
+
+  TreeNode *root = new TreeNode(preorder[preorder_root]);
+  int size_left_subtree = inorder_root - inorder_left;
+  root->left = buildTreeHelper(preorder, inorder, preorder_left + 1,
+                               preorder_left + size_left_subtree, inorder_left,
+                               inorder_root - 1, umap);
+  root->right =
+      buildTreeHelper(preorder, inorder, preorder_left + size_left_subtree + 1,
+                      preorder_right, inorder_root + 1, inorder_right, umap);
+  return root;
+}
+
+TreeNode *buildTree(const std::vector<int> &preorder,
+                    const std::vector<int> &inorder) {
+  std::unordered_map<int, int> umap;
+  for (int index = 0; index < preorder.size(); ++index) {
+    umap[inorder[index]] = index;
+  }
+  return buildTreeHelper(preorder, inorder, 0, preorder.size() - 1, 0,
+                         preorder.size() - 1, umap);
+}
+
+// 路径总和
+bool hasPathSum(TreeNode *root, int target) {
+  if (root == nullptr)
+    return false;
+  if (root->left == nullptr && root->right == nullptr)
+    return root->val == target;
+  int left = target - root->val;
+  return hasPathSum(root->left, left) || hasPathSum(root->right, left);
+}
+
+// 路径总和II
+void pathSumHelper(TreeNode *root, int target,
+                   std::vector<std::vector<int>> &result,
+                   std::vector<int> &path) {
+  if (root == nullptr)
+    return;
+  path.emplace_back(root->val);
+  target = target - root->val;
+  if (root->left == nullptr && root->right == nullptr && target == 0)
+    result.emplace_back(path);
+  pathSumHelper(root->left, target, result, path);
+  pathSumHelper(root->right, target, result, path);
+  path.pop_back();
+}
+
+std::vector<std::vector<int>> pathSum(TreeNode *root, int target) {
+  std::vector<std::vector<int>> result;
+  std::vector<int> path;
+  pathSumHelper(root, target, result, path);
+  return result;
+}
+
+// 路径总和III
+int pathSumIIIHelper(TreeNode *root, int target) {
+  if (root == nullptr)
+    return 0;
+  int result = 0;
+  if (root->val == target)
+    ++result;
+  result += pathSumIIIHelper(root->left, target - root->val);
+  result += pathSumIIIHelper(root->right, target - root->val);
+  return result;
+}
+
+int pathSumIII(TreeNode *root, int target) {}
