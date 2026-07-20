@@ -625,7 +625,8 @@ int main() {
   ps_root->right->right->left = new TreeNode(5);
   ps_root->right->right->right = new TreeNode(1);
   std::vector<std::vector<int>> pathSum_result;
-  pathSum_result = pathSum(ps_root, 22);
+  int pathSum_target = 22;
+  pathSum_result = pathSum(ps_root, pathSum_target);
   std::cout << "-----" << " The result of pathSum is below " << "-----"
             << std::endl;
   show2dVector(pathSum_result);
@@ -641,6 +642,80 @@ int main() {
   delete ps_root->right->right;
   delete ps_root->right;
   delete ps_root;
+
+  TreeNode *psiii_root = new TreeNode(5);
+  psiii_root->left = new TreeNode(4);
+  psiii_root->right = new TreeNode(8);
+  psiii_root->left->left = new TreeNode(11);
+  psiii_root->right->left = new TreeNode(13);
+  psiii_root->right->right = new TreeNode(4);
+  psiii_root->left->left->left = new TreeNode(7);
+  psiii_root->left->left->right = new TreeNode(2);
+  psiii_root->right->right->left = new TreeNode(5);
+  psiii_root->right->right->right = new TreeNode(1);
+  int pathSumIII_result;
+  int pathSumIII_target = 22;
+  pathSumIII_result = pathSumIII(psiii_root, pathSumIII_target);
+  std::cout << "-----" << " The result of pathSumIII is below " << "-----"
+            << std::endl;
+  std::cout << pathSumIII_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete psiii_root->left->left->left;
+  delete psiii_root->left->left->right;
+  delete psiii_root->left->left;
+  delete psiii_root->left;
+  delete psiii_root->right->left;
+  delete psiii_root->right->right->left;
+  delete psiii_root->right->right->right;
+  delete psiii_root->right->right;
+  delete psiii_root->right;
+  delete psiii_root;
+
+  TreeNode *lca_root = new TreeNode(3);
+  lca_root->left = new TreeNode(5);
+  lca_root->right = new TreeNode(1);
+  lca_root->left->left = new TreeNode(6);
+  lca_root->left->right = new TreeNode(2);
+  lca_root->right->left = new TreeNode(0);
+  lca_root->right->right = new TreeNode(8);
+  lca_root->left->right->left = new TreeNode(7);
+  lca_root->left->right->right = new TreeNode(4);
+  TreeNode *lowestCommonAncestor_result;
+  lowestCommonAncestor_result = lowestCommonAncestor(
+      lca_root, lca_root->left, lca_root->left->right->right);
+  std::cout << "-----" << " The result of lowestCommonAncestor is below "
+            << "-----" << std::endl;
+  std::cout << lowestCommonAncestor_result->val << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+  delete lca_root->left->right->left;
+  delete lca_root->left->right->right;
+  delete lca_root->right->left;
+  delete lca_root->right->right;
+  delete lca_root->left->left;
+  delete lca_root->left->right;
+  delete lca_root->right;
+  delete lca_root->left;
+  delete lca_root;
+
+  TreeNode *mps_root = new TreeNode(-10);
+  mps_root->left = new TreeNode(9);
+  mps_root->right = new TreeNode(20);
+  mps_root->right->left = new TreeNode(15);
+  mps_root->right->right = new TreeNode(7);
+  int maxPathSum_result;
+  maxPathSum_result = maxPathSum(mps_root);
+  std::cout << "-----" << " The result of maxPathSum is below " << "-----"
+            << std::endl;
+  std::cout << maxPathSum_result << std::endl;
+  std::cout << "-----" << " End " << std::endl;
+  std::cout << std::endl;
+  delete mps_root->right->left;
+  delete mps_root->right->right;
+  delete mps_root->right;
+  delete mps_root->left;
+  delete mps_root;
 
   return 0;
 }

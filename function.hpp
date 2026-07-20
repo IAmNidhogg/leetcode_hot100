@@ -197,6 +197,11 @@ void pathSumHelper(TreeNode *root, int target,
                    std::vector<std::vector<int>> &result,
                    std::vector<int> &path);
 std::vector<std::vector<int>> pathSum(TreeNode *root, int target);
+int pathSumIIIHelper(TreeNode *root, int target);
 int pathSumIII(TreeNode *root, int target);
+bool lowestCommonAncestorHelper(TreeNode *root, TreeNode *p, TreeNode *q,
+                                TreeNode *&result);
+TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
+int maxPathSum(TreeNode *root);
 
 #endif

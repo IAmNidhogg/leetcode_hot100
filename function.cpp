@@ -962,4 +962,47 @@ int pathSumIIIHelper(TreeNode *root, int target) {
   return result;
 }
 
-int pathSumIII(TreeNode *root, int target) {}
+int pathSumIII(TreeNode *root, int target) {
+  if (root == nullptr)
+    return 0;
+  int result = pathSumIIIHelper(root, target);
+  result += pathSumIII(root->left, target);
+  result += pathSumIII(root->right, target);
+  return result;
+}
+
+// 二叉树的最近公共祖先
+bool lowestCommonAncestorHelper(TreeNode *root, TreeNode *p, TreeNode *q,
+                                TreeNode *&result) {
+  if (root == nullptr)
+    return false;
+  bool lson = lowestCommonAncestorHelper(root->left, p, q, result);
+  bool rson = lowestCommonAncestorHelper(root->right, p, q, result);
+  if ((lson && rson) ||
+      ((root->val == p->val || root->val == q->val) && (lson || rson)))
+    result = root;
+  return lson || rson || (root->val == p->val || root->val == q->val);
+}
+
+TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
+  TreeNode *result;
+  lowestCommonAncestorHelper(root, p, q, result);
+  return result;
+}
+
+// 二叉树中的最大路径和
+int maxPathSumHelper(TreeNode *root, int &maxSum) {
+  if (root == nullptr)
+    return 0;
+  int leftgain = std::max(0, maxPathSumHelper(root->left, maxSum));
+  int rightgain = std::max(0, maxPathSumHelper(root->right, maxSum));
+  int pathSum = root->val + leftgain + rightgain;
+  maxSum = std::max(maxSum, pathSum);
+  return root->val + std::max(leftgain, rightgain);
+}
+
+int maxPathSum(TreeNode *root) {
+  int maxSum = INT_MIN;
+  maxPathSumHelper(root, maxSum);
+  return maxSum;
+}
