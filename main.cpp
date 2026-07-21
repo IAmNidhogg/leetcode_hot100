@@ -717,5 +717,27 @@ int main() {
   delete mps_root->left;
   delete mps_root;
 
+  std::vector<std::vector<char>> numIslands_grid{{'1', '1', '0', '0', '0'},
+                                                 {'1', '1', '0', '0', '0'},
+                                                 {'0', '0', '1', '0', '0'},
+                                                 {'0', '0', '0', '1', '1'}};
+  int numIslands_result;
+  numIslands_result = numIslands(numIslands_grid);
+  std::cout << "-----" << " The result of numIslands is below " << "-----"
+            << std::endl;
+  std::cout << numIslands_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<std::vector<int>> orangesRotting_grid{
+      {2, 1, 1}, {1, 1, 0}, {0, 1, 1}};
+  int orangesRotting_result;
+  orangesRotting_result = orangesRotting(orangesRotting_grid);
+  std::cout << "-----" << " The result of orangesRotting is below " << "-----"
+            << std::endl;
+  std::cout << orangesRotting_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

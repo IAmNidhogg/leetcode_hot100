@@ -203,5 +203,10 @@ bool lowestCommonAncestorHelper(TreeNode *root, TreeNode *p, TreeNode *q,
                                 TreeNode *&result);
 TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
 int maxPathSum(TreeNode *root);
+void numIslandsHelper(std::vector<std::vector<char>> &grid, int index,
+                      int jndex);
+int numIslands(std::vector<std::vector<char>> &grid);
+int orangesRotting(std::vector<std::vector<int>> &grid);
+bool canFinish(int numCourses, std::vector<std::vector<int>> &prerequisites);
 
 #endif

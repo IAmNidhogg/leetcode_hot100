@@ -1006,3 +1006,76 @@ int maxPathSum(TreeNode *root) {
   maxPathSumHelper(root, maxSum);
   return maxSum;
 }
+
+// 岛屿数量
+void numIslandsHelper(std::vector<std::vector<char>> &grid, int index,
+                      int jndex) {
+  if (index < 0 || index >= grid.size() || jndex < 0 ||
+      jndex >= grid[0].size() || grid[index][jndex] == '0') {
+    return;
+  }
+  grid[index][jndex] = '0';
+  numIslandsHelper(grid, index - 1, jndex);
+  numIslandsHelper(grid, index, jndex - 1);
+  numIslandsHelper(grid, index + 1, jndex);
+  numIslandsHelper(grid, index, jndex + 1);
+}
+
+int numIslands(std::vector<std::vector<char>> &grid) {
+  int count = 0;
+  for (int index = 0; index < grid.size(); ++index) {
+    for (int jndex = 0; jndex < grid[0].size(); ++jndex) {
+      if (grid[index][jndex] == '1') {
+        ++count;
+        numIslandsHelper(grid, index, jndex);
+      }
+    }
+  }
+  return count;
+}
+
+// 腐烂的橘子
+int orangesRotting(std::vector<std::vector<int>> &grid) {
+  int minute = 0;
+  int orange = 0;
+  for (int index = 0; index < grid.size(); ++index) {
+    for (int jndex = 0; jndex < grid[0].size(); ++jndex) {
+      if (grid[index][jndex] == 1)
+        ++orange;
+    }
+  }
+
+  int pre = 0;
+  while (orange > 0 && orange != pre) {
+    pre = orange;
+    for (int index = 0; index < grid.size(); ++index) {
+      for (int jndex = 0; jndex < grid[0].size(); ++jndex) {
+        if (grid[index][jndex] == minute + 2) {
+          if (index > 0 && grid[index - 1][jndex] == 1) {
+            grid[index - 1][jndex] = minute + 3;
+            --orange;
+          }
+          if (index < grid.size() - 1 && grid[index + 1][jndex] == 1) {
+            grid[index + 1][jndex] = minute + 3;
+            --orange;
+          }
+          if (jndex > 0 && grid[index][jndex - 1] == 1) {
+            grid[index][jndex - 1] = minute + 3;
+            --orange;
+          }
+          if (jndex < grid[0].size() - 1 && grid[index][jndex + 1] == 1) {
+            grid[index][jndex + 1] = minute + 3;
+            --orange;
+          }
+        }
+      }
+    }
+    ++minute;
+  }
+  if (orange > 0)
+    return -1;
+  return minute;
+}
+
+// 课程表
+bool canFinish(int numCourses, std::vector<std::vector<int>> &prerequisites) {}
