@@ -739,5 +739,27 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<std::vector<int>> canFinish_prerequisites{{1, 0}, {0, 1}};
+  int canFinish_numCourses = 2;
+  bool canFinish_result;
+  canFinish_result = canFinish(canFinish_numCourses, canFinish_prerequisites);
+  std::cout << "-----" << " The result of canFinish is below " << "-----"
+            << std::endl;
+  std::cout << canFinish_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  Trie *trie = new Trie();
+  trie->insert("apple");
+  std::cout << "-----" << " The result of Trie is below " << "-----"
+            << std::endl;
+  std::cout << trie->search("apple") << std::endl;
+  std::cout << trie->search("app") << std::endl;
+  std::cout << trie->startsWith("app") << std::endl;
+  trie->insert("app");
+  std::cout << trie->search("app") << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

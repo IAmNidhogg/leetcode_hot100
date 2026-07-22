@@ -1078,4 +1078,35 @@ int orangesRotting(std::vector<std::vector<int>> &grid) {
 }
 
 // 课程表
-bool canFinish(int numCourses, std::vector<std::vector<int>> &prerequisites) {}
+bool canFinish(int numCourses, std::vector<std::vector<int>> &prerequisites) {
+  std::vector<std::vector<int>> graph(numCourses);
+  std::vector<int> indegree(numCourses, 0);
+  for (const auto &pre : prerequisites) {
+    int course = pre[0];
+    int prerequisite = pre[1];
+    graph[prerequisite].push_back(course);
+    ++indegree[course];
+  }
+
+  std::queue<int> q;
+  for (int index = 0; index < numCourses; ++index) {
+    if (indegree[index] == 0) {
+      q.push(index);
+    }
+  }
+
+  int com = 0;
+  while (!q.empty()) {
+    int course = q.front();
+    q.pop();
+    ++com;
+
+    for (int nextCourse : graph[course]) {
+      --indegree[nextCourse];
+      if (indegree[nextCourse] == 0) {
+        q.push(nextCourse);
+      }
+    }
+  }
+  return com == numCourses;
+}
