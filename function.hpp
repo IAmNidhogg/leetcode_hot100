@@ -251,4 +251,10 @@ public:
   }
 };
 
+void permuteHelper(std::vector<std::vector<int>> &result,
+                   std::vector<int> &output, int first, int len);
+std::vector<std::vector<int>> permute(std::vector<int> &nums);
+std::vector<std::vector<int>> subsets(std::vector<int> &nums);
+std::vector<std::string> letterCombinations(std::string digits);
+
 #endif

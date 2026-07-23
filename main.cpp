@@ -761,5 +761,32 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> permute_nums{1, 2, 3};
+  std::vector<std::vector<int>> permute_result;
+  permute_result = permute(permute_nums);
+  std::cout << "-----" << " The result of permute is below " << "-----"
+            << std::endl;
+  show2dVector(permute_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> subsets_nums{1, 2, 3};
+  std::vector<std::vector<int>> subsets_result;
+  subsets_result = subsets(permute_nums);
+  std::cout << "-----" << " The result of subsets is below " << "-----"
+            << std::endl;
+  show2dVector(subsets_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string letterCombinations_digits = "23";
+  std::vector<std::string> letterCombinations_result;
+  letterCombinations_result = letterCombinations(letterCombinations_digits);
+  std::cout << "-----" << " The result of letterCombinations is below "
+            << "-----" << std::endl;
+  showStringVector(letterCombinations_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

@@ -1110,3 +1110,75 @@ bool canFinish(int numCourses, std::vector<std::vector<int>> &prerequisites) {
   }
   return com == numCourses;
 }
+
+// 全排列
+void permuteHelper(std::vector<std::vector<int>> &result,
+                   std::vector<int> &output, int first, int len) {
+  if (first == len) {
+    result.emplace_back(output);
+    return;
+  }
+  for (int index = first; index < len; ++index) {
+    std::swap(output[index], output[first]);
+    permuteHelper(result, output, first + 1, len);
+    std::swap(output[index], output[first]);
+  }
+}
+
+std::vector<std::vector<int>> permute(std::vector<int> &nums) {
+  std::vector<std::vector<int>> result;
+  permuteHelper(result, nums, 0, nums.size());
+  return result;
+}
+
+// 子集
+void subsetsHelper(int curr, std::vector<int> &nums,
+                   std::vector<std::vector<int>> &result,
+                   std::vector<int> &tmp) {
+  if (curr == nums.size()) {
+    result.push_back(tmp);
+    return;
+  }
+  tmp.push_back(nums[curr]);
+  subsetsHelper(curr + 1, nums, result, tmp);
+  tmp.pop_back();
+  subsetsHelper(curr + 1, nums, result, tmp);
+}
+
+std::vector<std::vector<int>> subsets(std::vector<int> &nums) {
+  std::vector<std::vector<int>> result;
+  std::vector<int> tmp;
+  subsetsHelper(0, nums, result, tmp);
+  return result;
+}
+
+// 电话号码的字母组合
+void letterCombinationsHelper(
+    std::vector<std::string> &combinations,
+    const std::unordered_map<char, std::string> &phonemap,
+    const std::string &digits, int index, std::string &combination) {
+  if (index == digits.length()) {
+    combinations.push_back(combination);
+  } else {
+    char digit = digits[index];
+    const std::string &letters = phonemap.at(digit);
+    for (const char &letter : letters) {
+      combination.push_back(letter);
+      letterCombinationsHelper(combinations, phonemap, digits, index + 1,
+                               combination);
+      combination.pop_back();
+    }
+  }
+}
+
+std::vector<std::string> letterCombinations(std::string digits) {
+  std::vector<std::string> combinations;
+  if (digits.empty())
+    return combinations;
+  std::unordered_map<char, std::string> phonemap{
+      {'2', "abc"}, {'3', "def"},  {'4', "ghi"}, {'5', "jkl"},
+      {'6', "mno"}, {'7', "pqrs"}, {'8', "tuv"}, {'9', "wxyz"}};
+  std::string combination;
+  letterCombinationsHelper(combinations, phonemap, digits, 0, combination);
+  return combinations;
+}
