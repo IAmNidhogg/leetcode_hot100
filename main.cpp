@@ -788,5 +788,23 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> combinationSum_candidates{2, 3, 6, 7};
+  std::vector<std::vector<int>> combinationSum_result;
+  combinationSum_result = combinationSum(combinationSum_candidates, 7);
+  std::cout << "-----" << " The result of combinationSum is below " << "-----"
+            << std::endl;
+  show2dVector(combinationSum_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  int generateParenthesis_n = 3;
+  std::vector<std::string> generateParenthesis_result;
+  generateParenthesis_result = generateParenthesis(generateParenthesis_n);
+  std::cout << "-----" << " The result of generateParenthesis is below "
+            << "-----" << std::endl;
+  showStringVector(generateParenthesis_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

@@ -254,7 +254,22 @@ public:
 void permuteHelper(std::vector<std::vector<int>> &result,
                    std::vector<int> &output, int first, int len);
 std::vector<std::vector<int>> permute(std::vector<int> &nums);
+void subsetsHelper(int curr, std::vector<int> &nums,
+                   std::vector<std::vector<int>> &result,
+                   std::vector<int> &tmp);
 std::vector<std::vector<int>> subsets(std::vector<int> &nums);
+void letterCombinationsHelper(
+    std::vector<std::string> &combinations,
+    const std::unordered_map<char, std::string> &phonemap,
+    const std::string &digits, int index, std::string &combination);
 std::vector<std::string> letterCombinations(std::string digits);
+void combinationSumHelper(std::vector<int> &candidates, int target,
+                          std::vector<std::vector<int>> &result,
+                          std::vector<int> &combine, int index);
+std::vector<std::vector<int>> combinationSum(std::vector<int> &candidate,
+                                             int target);
+void generateParenthesisHelper(std::vector<std::string> &result,
+                               std::string &curr, int open, int close, int n);
+std::vector<std::string> generateParenthesis(int n);
 
 #endif

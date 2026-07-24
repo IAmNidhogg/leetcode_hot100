@@ -1182,3 +1182,57 @@ std::vector<std::string> letterCombinations(std::string digits) {
   letterCombinationsHelper(combinations, phonemap, digits, 0, combination);
   return combinations;
 }
+
+// 组合总和
+void combinationSumHelper(std::vector<int> &candidates, int target,
+                          std::vector<std::vector<int>> &result,
+                          std::vector<int> &combine, int index) {
+  if (index == candidates.size()) {
+    return;
+  }
+  if (target == 0) {
+    result.emplace_back(combine);
+    return;
+  }
+  combinationSumHelper(candidates, target, result, combine, index + 1);
+  if (target - candidates[index] >= 0) {
+    combine.emplace_back(candidates[index]);
+    combinationSumHelper(candidates, target - candidates[index], result,
+                         combine, index);
+    combine.pop_back();
+  }
+}
+
+std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates,
+                                             int target) {
+  std::vector<std::vector<int>> result;
+  std::vector<int> combine;
+  combinationSumHelper(candidates, target, result, combine, 0);
+  return result;
+}
+
+// 括号生成
+void generateParenthesisHelper(std::vector<std::string> &result,
+                               std::string &curr, int open, int close, int n) {
+  if (curr.size() == n * 2) {
+    result.push_back(curr);
+    return;
+  }
+  if (open < n) {
+    curr.push_back('(');
+    generateParenthesisHelper(result, curr, open + 1, close, n);
+    curr.pop_back();
+  }
+  if (close < open) {
+    curr.push_back(')');
+    generateParenthesisHelper(result, curr, open, close + 1, n);
+    curr.pop_back();
+  }
+}
+
+std::vector<std::string> generateParenthesis(int n) {
+  std::vector<std::string> result;
+  std::string curr;
+  generateParenthesisHelper(result, curr, 0, 0, n);
+  return result;
+}
