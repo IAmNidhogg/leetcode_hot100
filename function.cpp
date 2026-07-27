@@ -1236,3 +1236,133 @@ std::vector<std::string> generateParenthesis(int n) {
   generateParenthesisHelper(result, curr, 0, 0, n);
   return result;
 }
+
+// 单词搜索
+bool existHelper(std::vector<std::vector<char>> &board,
+                 std::vector<std::vector<int>> &visited, int index, int jndex,
+                 std::string &s, int kndex) {
+  if (board[index][jndex] != s[kndex]) {
+    return false;
+  } else {
+    return true;
+  }
+  visited[index][jndex] = true;
+  std::vector<std::pair<int, int>> directions{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+  bool result = false;
+  for (const auto &dir : directions) {
+    int newi = index + dir.first, newj = jndex + dir.second;
+    if (newi >= 0 && newi < board.size() && newj >= 0 &&
+        newj < board[0].size()) {
+      if (!visited[newi][newj]) {
+        bool flag = existHelper(board, visited, newi, newj, s, kndex + 1);
+        if (flag) {
+          result = true;
+          break;
+        }
+      }
+    }
+  }
+  visited[index][jndex] = false;
+  return result;
+}
+
+bool exist(std::vector<std::vector<char>> &board, std::string word) {
+  std::vector<std::vector<int>> visited(board.size(),
+                                        std::vector<int>(board[0].size()));
+  for (int index = 0; index < board.size(); ++index) {
+    for (int jndex = 0; jndex < board[0].size(); ++jndex) {
+      bool flag = existHelper(board, visited, index, jndex, word, 0);
+      if (flag) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// 分割回文串
+void partitionHelper(const std::string &s, int index,
+                     std::vector<std::vector<std::string>> &result,
+                     std::vector<std::vector<bool>> &fun,
+                     std::vector<std::string> &ans) {
+  if (index == s.size()) {
+    result.push_back(ans);
+    return;
+  }
+  for (int jndex = index; jndex < s.size(); ++jndex) {
+    if (fun[index][jndex]) {
+      ans.push_back(s.substr(index, jndex - index + 1));
+      partitionHelper(s, jndex + 1, result, fun, ans);
+      ans.pop_back();
+    }
+  }
+}
+
+std::vector<std::vector<std::string>> partition(std::string s) {
+  std::vector<std::vector<std::string>> result;
+  std::vector<std::vector<bool>> fun;
+  std::vector<std::string> ans;
+  fun.assign(s.size(), std::vector<bool>(s.size(), true));
+
+  for (int index = s.size() - 1; index >= 0; --index) {
+    for (int jndex = index + 1; jndex < s.size(); ++jndex) {
+      fun[index][jndex] = (s[index] == s[jndex]) && fun[index + 1][jndex - 1];
+    }
+  }
+  partitionHelper(s, 0, result, fun, ans);
+  return result;
+}
+
+// N皇后
+void solveNQueensHelper(std::vector<std::vector<std::string>> &solutions,
+                        std::vector<int> &queens, int n, int row,
+                        std::unordered_set<int> &col,
+                        std::unordered_set<int> &dia1,
+                        std::unordered_set<int> &dia2) {
+  if (row == n) {
+    std::vector<std::string> board = generateBoard(queens, n);
+    solutions.push_back(board);
+  } else {
+    for (int index = 0; index < n; ++index) {
+      if (col.find(index) != col.end()) {
+        continue;
+      }
+      int d1 = row - index;
+      if (dia1.find(d1) != dia1.end()) {
+        continue;
+      }
+      int d2 = row + index;
+      if (dia2.find(d2) != dia2.end()) {
+        continue;
+      }
+      queens[row] = index;
+      col.insert(index);
+      dia1.insert(d1);
+      dia2.insert(d2);
+      solveNQueensHelper(solutions, queens, n, row + 1, col, dia1, dia2);
+      queens[row] = -1;
+      col.erase(index);
+      dia1.erase(d1);
+      dia2.erase(d2);
+    }
+  }
+}
+std::vector<std::vector<std::string>> solveNQueens(int n) {
+  auto solutions = std::vector<std::vector<std::string>>();
+  auto queens = std::vector<int>(n, -1);
+  auto col = std::unordered_set<int>();
+  auto dia1 = std::unordered_set<int>();
+  auto dia2 = std::unordered_set<int>();
+  solveNQueensHelper(solutions, queens, n, 0, col, dia1, dia2);
+  return solutions;
+}
+
+std::vector<std::string> generateBoard(std::vector<int> &queens, int n) {
+  auto board = std::vector<std::string>();
+  for (int index = 0; index < n; ++index) {
+    std::string row = std::string(n, '.');
+    row[queens[index]] = 'Q';
+    board.push_back(row);
+  }
+  return board;
+}

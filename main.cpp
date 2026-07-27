@@ -806,5 +806,46 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<std::vector<char>> exist_board{
+      {'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+  std::string exist_word = "ABCCED";
+  bool exist_result;
+  exist_result = exist(exist_board, exist_word);
+  std::cout << "-----" << " The result of exist is below " << "-----"
+            << std::endl;
+  std::cout << exist_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  myqueue mq;
+  mq.push(1);
+  mq.push(2);
+  std::cout << "-----" << " The result of myqueue is below " << "-----"
+            << std::endl;
+  std::cout << mq.top() << std::endl;
+  std::cout << mq.pop() << std::endl;
+  std::cout << mq.top() << std::endl;
+  std::cout << mq.empty() << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string partition_s = "aab";
+  std::vector<std::vector<std::string>> partition_result;
+  partition_result = partition(partition_s);
+  std::cout << "-----" << " The result of partition is below " << "-----"
+            << std::endl;
+  show2dStringVector(partition_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  int solveNQueens_n = 4;
+  std::vector<std::vector<std::string>> solveNQueens_result;
+  solveNQueens_result = solveNQueens(solveNQueens_n);
+  std::cout << "-----" << " The result of solveNQueens is below " << "-----"
+            << std::endl;
+  show2dStringVector(solveNQueens_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

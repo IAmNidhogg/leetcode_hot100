@@ -1,8 +1,10 @@
 #ifndef FUNCTION_HPP
 #define FUNCTION_HPP
 
+#include <stack>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -271,5 +273,61 @@ std::vector<std::vector<int>> combinationSum(std::vector<int> &candidate,
 void generateParenthesisHelper(std::vector<std::string> &result,
                                std::string &curr, int open, int close, int n);
 std::vector<std::string> generateParenthesis(int n);
+bool existHelper(std::vector<std::vector<char>> &board,
+                 std::vector<std::vector<int>> &visited, int index, int jndex,
+                 std::string &s, int kndex);
+bool exist(std::vector<std::vector<char>> &board, std::string word);
+
+class myqueue {
+public:
+  myqueue() = default;
+  ~myqueue() = default;
+
+  void push(int val) { ll.push(val); }
+
+  int pop() {
+    if (!rr.empty()) {
+      int val = rr.top();
+      rr.pop();
+      return val;
+    } else {
+      while (!ll.empty()) {
+        rr.push(ll.top());
+        ll.pop();
+      }
+      int val = rr.top();
+      rr.pop();
+      return val;
+    }
+  }
+
+  int top() {
+    if (!rr.empty()) {
+      return rr.top();
+    } else {
+      while (!ll.empty()) {
+        rr.push(ll.top());
+        ll.pop();
+      }
+      return rr.top();
+    }
+  }
+
+  bool empty() { return ll.empty() && rr.empty(); }
+
+private:
+  std::stack<int> ll;
+  std::stack<int> rr;
+};
+
+void partitionHelper(const std::string &s, int index);
+std::vector<std::vector<std::string>> partition(std::string s);
+void solveNQueensHelper(std::vector<std::vector<std::string>> &solutions,
+                        std::vector<int> &queens, int n, int row,
+                        std::unordered_set<int> &col,
+                        std::unordered_set<int> &dia1,
+                        std::unordered_set<int> &dia2);
+std::vector<std::vector<std::string>> solveNQueens(int n);
+std::vector<std::string> generateBoard(std::vector<int> &queens, int n);
 
 #endif
