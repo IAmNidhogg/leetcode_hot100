@@ -847,5 +847,35 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> searchInsert_nums{1, 3, 5, 6};
+  std::cout << "-----" << " The result of searchInsert is below " << "-----"
+            << std::endl;
+  std::cout << searchInsert(searchInsert_nums, 2) << " "
+            << searchInsert(searchInsert_nums, 7) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<std::vector<int>> searchMatrix_matrix2{
+      {1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+  std::cout << "-----" << " The result of searchMatrix2 is below " << "-----"
+            << std::endl;
+  std::cout << searchMatrix2(searchMatrix_matrix2, 3) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> searchRange_nums{5, 7, 7, 8, 8, 10};
+  std::cout << "-----" << " The result of searchRange is below " << "-----"
+            << std::endl;
+  showVector(searchRange(searchRange_nums, 8));
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> searchRotate_nums{4, 5, 6, 7, 0, 1, 2};
+  std::cout << "-----" << " The result of searchRotate is below " << "-----"
+            << std::endl;
+  std::cout << searchRotate(searchRotate_nums, 0) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

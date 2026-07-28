@@ -329,5 +329,11 @@ void solveNQueensHelper(std::vector<std::vector<std::string>> &solutions,
                         std::unordered_set<int> &dia2);
 std::vector<std::vector<std::string>> solveNQueens(int n);
 std::vector<std::string> generateBoard(std::vector<int> &queens, int n);
+int searchInsert(const std::vector<int> &nums, int target);
+bool searchMatrix2(const std::vector<std::vector<int>> &matrix, int target);
+int lowerBound(const std::vector<int> &nums, int target);
+int upperBound(const std::vector<int> &nums, int target);
+std::vector<int> searchRange(const std::vector<int> &nums, int target);
+int searchRotate(const std::vector<int> &nums, int target);
 
 #endif

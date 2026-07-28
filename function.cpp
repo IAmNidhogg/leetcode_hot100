@@ -1366,3 +1366,100 @@ std::vector<std::string> generateBoard(std::vector<int> &queens, int n) {
   }
   return board;
 }
+
+// 搜索插入位置
+int searchInsert(const std::vector<int> &nums, int target) {
+  int left = 0;
+  int right = nums.size() - 1;
+  while (left <= right) {
+    int mid = (right + left) / 2;
+    if (nums[mid] == target) {
+      return mid;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else if (nums[mid] > target) {
+      right = mid - 1;
+    }
+  }
+  return left;
+}
+
+// 搜索二维矩阵
+bool searchMatrix2(const std::vector<std::vector<int>> &matrix, int target) {
+  if (matrix.empty())
+    return false;
+  int left = 0;
+  int right = matrix.size() * matrix[0].size() - 1;
+  while (left <= right) {
+    int mid = (left + right) / 2;
+    int row = mid / matrix[0].size();
+    int col = mid % matrix[0].size();
+    if (matrix[row][col] == target)
+      return true;
+    else if (matrix[row][col] < target)
+      left = mid + 1;
+    else if (matrix[row][col] > target)
+      right = mid - 1;
+  }
+  return false;
+}
+
+// 在排序数组中查找元素的第一个和最后一个位置
+int lowerBound(const std::vector<int> &nums, int target) {
+  int left = 0;
+  int right = nums.size() - 1;
+  while (left <= right) {
+    int mid = (left + right) / 2;
+    if (nums[mid] >= target)
+      right = mid - 1;
+    else
+      left = mid + 1;
+  }
+  return left;
+}
+
+int upperBound(const std::vector<int> &nums, int target) {
+  int left = 0;
+  int right = nums.size() - 1;
+  while (left <= right) {
+    int mid = (left + right) / 2;
+    if (nums[mid] <= target)
+      left = mid + 1;
+    else
+      right = mid - 1;
+  }
+  return right;
+}
+
+std::vector<int> searchRange(const std::vector<int> &nums, int target) {
+  int low = lowerBound(nums, target);
+  int hig = upperBound(nums, target);
+  if (low > hig)
+    return {-1, -1};
+  return {low, hig};
+}
+
+// 搜索旋转排序数组
+int searchRotate(const std::vector<int> &nums, int target) {
+  int left = 0;
+  int right = nums.size() - 1;
+  while (left <= right) {
+    int mid = (left + right) / 2;
+    if (nums[mid] == target)
+      return mid;
+    if (nums[mid] >= nums[left]) {
+      if (nums[mid] > target && nums[left] <= target) {
+        right = mid - 1;
+      } else if (target > nums[mid] || target < nums[left]) {
+        left = mid + 1;
+      }
+    } else if (nums[mid] < nums[left]) {
+      if (nums[mid] > target || nums[right] < target) {
+        right = mid - 1;
+      } else if (target > nums[mid] && target <= nums[right]) {
+        left = mid + 1;
+      }
+    }
+  }
+  return -1;
+}
