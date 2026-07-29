@@ -335,5 +335,8 @@ int lowerBound(const std::vector<int> &nums, int target);
 int upperBound(const std::vector<int> &nums, int target);
 std::vector<int> searchRange(const std::vector<int> &nums, int target);
 int searchRotate(const std::vector<int> &nums, int target);
+int findMin(const std::vector<int> &nums);
+double findMedianSortedArrays(const std::vector<int> &nums1,
+                              const std::vector<int> &nums2);
 
 #endif

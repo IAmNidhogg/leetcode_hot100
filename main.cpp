@@ -877,5 +877,22 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> findMin_nums{3, 4, 5, 1, 2};
+  std::cout << "-----" << " The result of findMin is below " << "-----"
+            << std::endl;
+  std::cout << findMin(findMin_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> findMedianSortedArrays_nums1{1, 2};
+  std::vector<int> findMedianSortedArrays_nums2{3, 4};
+  std::cout << "-----" << " The result of findMedianSortArrays is below "
+            << "-----" << std::endl;
+  std::cout << findMedianSortedArrays(findMedianSortedArrays_nums1,
+                                      findMedianSortedArrays_nums2)
+            << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
