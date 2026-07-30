@@ -894,5 +894,42 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::string isValid_string = "()[]{}";
+  std::cout << "-----" << " The result of isValid is below " << "-----"
+            << std::endl;
+  std::cout << isValid(isValid_string) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  MinStack ms;
+  ms.push(-2);
+  ms.push(0);
+  ms.push(-3);
+  std::cout << "-----" << " The result of MinStack is below " << "-----"
+            << std::endl;
+  std::cout << ms.getMin() << std::endl;
+  ms.pop();
+  std::cout << ms.top() << " " << ms.getMin() << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string decodeString_s = "3[a]2[bc]";
+  std::string decodeString_result;
+  decodeString_result = decodeString(decodeString_s);
+  std::cout << "-----" << " The result of decodeString is below " << "-----"
+            << std::endl;
+  std::cout << decodeString_result << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> dailyTemperatures_T{73, 74, 75, 71, 69, 72, 76, 73};
+  std::vector<int> dailyTemperatures_result =
+      dailyTemperatures(dailyTemperatures_T);
+  std::cout << "-----" << " The result of dailyTemperatures is below "
+            << "-----" << std::endl;
+  showVector(dailyTemperatures_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

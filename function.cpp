@@ -1518,3 +1518,82 @@ double findMedianSortedArrays(const std::vector<int> &nums1,
            2.0;
   }
 }
+
+// 有效的括号
+bool isValid(std::string s) {
+  std::stack<char> st;
+  for (int index = 0; index < s.length(); ++index) {
+    if (s[index] == '(' || s[index] == '[' || s[index] == '{')
+      st.push(s[index]);
+    if (s[index] == ')') {
+      if (st.empty() || st.top() != '(')
+        return false;
+      else
+        st.pop();
+    }
+    if (s[index] == ']') {
+      if (st.empty() || st.top() != '[')
+        return false;
+      else
+        st.pop();
+    }
+    if (s[index] == '}') {
+      if (st.empty() || st.top() != '{')
+        return false;
+      else
+        st.pop();
+    }
+  }
+  return st.empty();
+}
+
+// 字符串解码
+int getDigits(std::string &src, size_t &ptr) {
+  int ret = 0;
+  while (ptr < src.size() && isdigit(src[ptr]))
+    ret = ret * 10 + src[ptr++] - '0';
+  return ret;
+}
+
+std::string getString(std::string &src, size_t &ptr) {
+  if (ptr == src.size() || src[ptr] == ']')
+    return "";
+  char curr = src[ptr];
+  int reptime = 1;
+  std::string ret;
+
+  if (isdigit(curr)) {
+    reptime = getDigits(src, ptr);
+    ++ptr;
+    std::string str = getString(src, ptr);
+    ++ptr;
+    while (reptime--)
+      ret += str;
+  } else if (isalpha(curr)) {
+    ret = std::string(1, src[ptr++]);
+  }
+  return ret + getString(src, ptr);
+}
+
+std::string decodeString(std::string s) {
+  std::string src = s;
+  size_t ptr = 0;
+  return getString(src, ptr);
+}
+
+// 每日温度
+std::vector<int> dailyTemperatures(std::vector<int> &T) {
+  if (T.size() == 0)
+    return T;
+  std::stack<int> st;
+  std::vector<int> res(T.size(), 0);
+  for (int index = 0; index < T.size(); ++index) {
+    while (!st.empty() && T[index] > T[st.top()]) {
+      int tmp = st.top();
+      st.pop();
+      res[tmp] = index - tmp;
+    }
+    st.push(index);
+  }
+  return res;
+}

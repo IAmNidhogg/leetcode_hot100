@@ -338,5 +338,36 @@ int searchRotate(const std::vector<int> &nums, int target);
 int findMin(const std::vector<int> &nums);
 double findMedianSortedArrays(const std::vector<int> &nums1,
                               const std::vector<int> &nums2);
+bool isValid(std::string s);
+
+class MinStack {
+public:
+  MinStack() {}
+
+  void push(int val) {
+    a.push(val);
+    if (b.empty() || val <= b.top())
+      b.push(val);
+  }
+
+  void pop() {
+    if (b.top() == a.top())
+      b.pop();
+    a.pop();
+  }
+
+  int top() { return a.top(); }
+
+  int getMin() { return b.top(); }
+
+private:
+  std::stack<int> a;
+  std::stack<int> b;
+};
+
+int getDigits(std::string &src, size_t &ptr);
+std::string getString(std::string &src, size_t &ptr);
+std::string decodeString(std::string s);
+std::vector<int> dailyTemperatures(std::vector<int> &T);
 
 #endif
