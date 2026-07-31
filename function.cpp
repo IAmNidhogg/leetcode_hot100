@@ -1582,7 +1582,7 @@ std::string decodeString(std::string s) {
 }
 
 // 每日温度
-std::vector<int> dailyTemperatures(std::vector<int> &T) {
+std::vector<int> dailyTemperatures(const std::vector<int> &T) {
   if (T.size() == 0)
     return T;
   std::stack<int> st;
@@ -1596,4 +1596,80 @@ std::vector<int> dailyTemperatures(std::vector<int> &T) {
     st.push(index);
   }
   return res;
+}
+
+// 柱状图中最大的矩形
+int largestRectangleArea(const std::vector<int> &heights) {
+  std::vector<int> left(heights.size()), right(heights.size(), heights.size());
+  std::stack<int> st;
+  for (int index = 0; index < heights.size(); ++index) {
+    while (!st.empty() && heights[st.top()] >= heights[index]) {
+      right[st.top()] = index;
+      st.pop();
+    }
+    left[index] = (st.empty() ? -1 : st.top());
+    st.push(index);
+  }
+
+  int ans = 0;
+  for (int index = 0; index < heights.size(); ++index) {
+    ans = std::max(ans, (right[index] - left[index] - 1) * heights[index]);
+  }
+  return ans;
+}
+
+// 数组中的第K个最大元素
+int quickselect(std::vector<int> &nums, int l, int r, int k) {
+  if (l == r)
+    return nums[k];
+  int partition = nums[l], i = l - 1, j = r + 1;
+  while (i < j) {
+    do
+      i++;
+    while (nums[i] < partition);
+    do
+      j--;
+    while (nums[j] > partition);
+    if (i < j)
+      std::swap(nums[i], nums[j]);
+  }
+  if (k <= j)
+    return quickselect(nums, l, j, k);
+  else
+    return quickselect(nums, j + 1, r, k);
+}
+
+int findKthLargest(std::vector<int> &nums, int k) {
+  return quickselect(nums, 0, nums.size() - 1, nums.size() - k);
+}
+
+// 前K个高频元素
+static bool cmp(std::pair<int, int> &m, std::pair<int, int> &n) {
+  return m.second > n.second;
+}
+
+std::vector<int> topKFrequent(std::vector<int> &nums, int k) {
+  std::unordered_map<int, int> occ;
+  for (auto &v : nums) {
+    occ[v]++;
+  }
+  std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
+                      decltype(&cmp)>
+      q(cmp);
+  for (auto &[num, count] : occ) {
+    if (q.size() == k) {
+      if (q.top().second < count) {
+        q.pop();
+        q.emplace(num, count);
+      }
+    } else {
+      q.emplace(num, count);
+    }
+  }
+  std::vector<int> result;
+  while (!q.empty()) {
+    result.emplace_back(q.top().first);
+    q.pop();
+  }
+  return result;
 }

@@ -931,5 +931,27 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> largestRectangleArea_heights{2, 1, 5, 6, 2, 3};
+  std::cout << "-----" << " The result of largestRectangleArea is below "
+            << "-----" << std::endl;
+  std::cout << largestRectangleArea(largestRectangleArea_heights) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> findKthLargest_nums{3, 2, 3, 1, 2, 4, 5, 5, 6};
+  std::cout << "-----" << " The result of findKthLargest is below " << "-----"
+            << std::endl;
+  std::cout << findKthLargest(findKthLargest_nums, 4) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> topKFrequent_nums{1, 2, 1, 2, 1, 2, 3, 1, 3, 2};
+  std::vector<int> topKFrequent_result = topKFrequent(topKFrequent_nums, 2);
+  std::cout << "-----" << " The result of topKFrequent is below " << "-----"
+            << std::endl;
+  showVector(topKFrequent_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

@@ -368,6 +368,11 @@ private:
 int getDigits(std::string &src, size_t &ptr);
 std::string getString(std::string &src, size_t &ptr);
 std::string decodeString(std::string s);
-std::vector<int> dailyTemperatures(std::vector<int> &T);
+std::vector<int> dailyTemperatures(const std::vector<int> &T);
+int largestRectangleArea(const std::vector<int> &heights);
+int quickselect(std::vector<int> &nums, int l, int r, int k);
+int findKthLargest(std::vector<int> &nums, int k);
+static bool cmp(std::pair<int, int> &m, std::pair<int, int> &n);
+std::vector<int> topKFrequent(std::vector<int> &nums, int k);
 
 #endif
