@@ -1,6 +1,7 @@
 #ifndef FUNCTION_HPP
 #define FUNCTION_HPP
 
+#include <queue>
 #include <stack>
 #include <string>
 #include <unordered_map>
@@ -374,5 +375,41 @@ int quickselect(std::vector<int> &nums, int l, int r, int k);
 int findKthLargest(std::vector<int> &nums, int k);
 static bool cmp(std::pair<int, int> &m, std::pair<int, int> &n);
 std::vector<int> topKFrequent(std::vector<int> &nums, int k);
+
+class MedianFinder {
+public:
+  MedianFinder() {}
+
+  void addNum(int num) {
+    if (queMin.empty() || num <= queMin.top()) {
+      queMin.push(num);
+      if (queMax.size() + 1 < queMin.size()) {
+        queMax.push(queMin.top());
+        queMin.pop();
+      }
+    } else {
+      queMax.push(num);
+      if (queMax.size() > queMin.size()) {
+        queMin.push(queMax.top());
+        queMax.pop();
+      }
+    }
+  }
+
+  double findMedian() {
+    if (queMin.size() > queMax.size()) {
+      return queMin.top();
+    }
+    return (queMin.top() + queMax.top()) / 2.0;
+  }
+
+private:
+  std::priority_queue<int, std::vector<int>, std::less<int>> queMin;
+  std::priority_queue<int, std::vector<int>, std::greater<int>> queMax;
+};
+
+int maxProfit(const std::vector<int> &prices);
+int jump(const std::vector<int> &nums);
+std::vector<int> partitionLabels(std::string s);
 
 #endif

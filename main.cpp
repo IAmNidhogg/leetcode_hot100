@@ -953,5 +953,38 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  MedianFinder mf;
+  mf.addNum(1);
+  mf.addNum(2);
+  std::cout << "-----" << " The result of MedianFinder is below " << "-----"
+            << std::endl;
+  std::cout << mf.findMedian() << std::endl;
+  mf.addNum(3);
+  std::cout << mf.findMedian() << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> maxProfit_prices{7, 1, 5, 3, 6, 4};
+  std::cout << "-----" << " The result of maxProfit is below " << "-----"
+            << std::endl;
+  std::cout << maxProfit(maxProfit_prices) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> jump_nums{2, 3, 1, 1, 4};
+  std::cout << "-----" << " The result of jump is below " << "-----"
+            << std::endl;
+  std::cout << jump(jump_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string partitionLabels_s = "ababcbacadefegdehijhklij";
+  std::vector<int> partitionLabels_result = partitionLabels(partitionLabels_s);
+  std::cout << "-----" << " The result of partitionLabels is below " << "-----"
+            << std::endl;
+  showVector(partitionLabels_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

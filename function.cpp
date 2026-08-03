@@ -1673,3 +1673,48 @@ std::vector<int> topKFrequent(std::vector<int> &nums, int k) {
   }
   return result;
 }
+
+// 买卖股票的最佳时机
+int maxProfit(const std::vector<int> &prices) {
+  int inf = INT_MAX;
+  int minprice = inf, maxprofit = 0;
+  for (int price : prices) {
+    maxprofit = std::max(maxprofit, price - minprice);
+    minprice = std::min(price, minprice);
+  }
+  return maxprofit;
+}
+
+// 跳跃游戏II
+int jump(const std::vector<int> &nums) {
+  int maxpos = 0, n = nums.size(), end = 0, step = 0;
+  for (int index = 0; index < n - 1; ++index) {
+    if (maxpos >= index) {
+      maxpos = std::max(maxpos, index + nums[index]);
+      if (index == end) {
+        end = maxpos;
+        ++step;
+      }
+    }
+  }
+  return step;
+}
+
+// 划分字母区间
+std::vector<int> partitionLabels(std::string s) {
+  int last[26];
+  int length = s.size();
+  for (int index = 0; index < length; ++index) {
+    last[s[index] - 'a'] = index;
+  }
+  std::vector<int> partition;
+  int start = 0, end = 0;
+  for (int index = 0; index < length; ++index) {
+    end = std::max(end, last[s[index] - 'a']);
+    if (index == end) {
+      partition.push_back(end - start + 1);
+      start = end + 1;
+    }
+  }
+  return partition;
+}
