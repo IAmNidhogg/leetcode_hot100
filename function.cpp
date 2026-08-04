@@ -1718,3 +1718,75 @@ std::vector<int> partitionLabels(std::string s) {
   }
   return partition;
 }
+
+// 爬楼梯
+int climbStairs(int n) {
+  if (n <= 2)
+    return n;
+  int a = 1, b = 2;
+  for (int index = 3; index <= n; ++index) {
+    int sum = a + b;
+    a = b;
+    b = sum;
+  }
+  return b;
+}
+
+// 杨辉三角
+std::vector<std::vector<int>> yanghui(int n) {
+  std::vector<std::vector<int>> result(n);
+  for (int index = 0; index < n; ++index) {
+    result[index].resize(index + 1);
+    result[index][0] = 1;
+    result[index][index] = 1;
+    for (int jndex = 1; jndex < index; ++jndex) {
+      result[index][jndex] =
+          result[index - 1][jndex - 1] + result[index - 1][jndex];
+    }
+  }
+  return result;
+}
+
+// 打家劫舍
+int rob(const std::vector<int> &nums) {
+  if (nums.size() == 0)
+    return 0;
+  if (nums.size() == 1)
+    return nums[0];
+  int p1 = std::max(nums[0], nums[1]);
+  int p2 = nums[0];
+  for (int index = 2; index < nums.size(); ++index) {
+    int c = std::max(p1, nums[index] + p2);
+    p2 = p1;
+    p1 = c;
+  }
+  return p1;
+}
+
+// 完全平方数
+int numSquares(int n) {
+  std::vector<int> f(n + 1);
+  for (int index = 1; index <= n; ++index) {
+    int minn = INT_MAX;
+    for (int jndex = 1; jndex * jndex <= index; ++jndex) {
+      minn = std::min(minn, f[index - jndex * jndex]);
+    }
+    f[index] = minn + 1;
+  }
+  return f[n];
+}
+
+// 零钱兑换
+int coinChange(const std::vector<int> &coins, int amount) {
+  int maxa = amount + 1;
+  std::vector<int> dp(maxa, maxa);
+  dp[0] = 0;
+  for (int index = 1; index <= amount; ++index) {
+    for (int jndex = 0; jndex < (int)coins.size(); ++jndex) {
+      if (coins[jndex] <= index) {
+        dp[index] = std::min(dp[index], dp[index - coins[jndex]] + 1);
+      }
+    }
+  }
+  return dp[amount] > amount ? -1 : dp[amount];
+}

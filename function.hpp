@@ -411,5 +411,10 @@ private:
 int maxProfit(const std::vector<int> &prices);
 int jump(const std::vector<int> &nums);
 std::vector<int> partitionLabels(std::string s);
+int climbStairs(int n);
+std::vector<std::vector<int>> yanghui(int n);
+int rob(const std::vector<int> &nums);
+int numSquares(int n);
+int coinChange(const std::vector<int> &coins, int amount);
 
 #endif

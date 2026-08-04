@@ -986,5 +986,41 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  int climbStairs_n = 4;
+  std::cout << "-----" << " The result of climbStairs is below " << "-----"
+            << std::endl;
+  std::cout << climbStairs(climbStairs_n) << std::endl;
+  std::cout << "-----" << " End " << std::endl;
+  std::cout << std::endl;
+
+  int yanghui_n = 5;
+  std::vector<std::vector<int>> yanghui_result = yanghui(yanghui_n);
+  std::cout << "-----" << " The result of yanghui is below " << "-----"
+            << std::endl;
+  show2dVector(yanghui_result);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> rob_nums{2, 7, 9, 3, 1};
+  std::cout << "-----" << " The result of rob is below " << "-----"
+            << std::endl;
+  std::cout << rob(rob_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  int numSquares_n = 13;
+  std::cout << "-----" << " The result of numSquares is below " << "-----"
+            << std::endl;
+  std::cout << numSquares(numSquares_n) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> coinChange_coins{1, 2, 5};
+  std::cout << "-----" << " The result of coinChange is below " << "-----"
+            << std::endl;
+  std::cout << coinChange(coinChange_coins, 11) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
