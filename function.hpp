@@ -416,5 +416,8 @@ std::vector<std::vector<int>> yanghui(int n);
 int rob(const std::vector<int> &nums);
 int numSquares(int n);
 int coinChange(const std::vector<int> &coins, int amount);
+bool wordBreak(std::string s, const std::vector<std::string> &wordDict);
+int lengthOfLIS(const std::vector<int> &nums);
+int maxProduct(const std::vector<int> &nums);
 
 #endif

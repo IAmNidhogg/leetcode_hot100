@@ -1790,3 +1790,56 @@ int coinChange(const std::vector<int> &coins, int amount) {
   }
   return dp[amount] > amount ? -1 : dp[amount];
 }
+
+// 单词拆分
+bool wordBreak(std::string s, const std::vector<std::string> &wordDict) {
+  auto wordset = std::unordered_set<std::string>();
+  for (auto word : wordDict) {
+    wordset.insert(word);
+  }
+  auto dp = std::vector<bool>(s.size() + 1);
+  dp[0] = true;
+  for (int index = 1; index <= s.size(); ++index) {
+    for (int jndex = 0; jndex < index; ++jndex) {
+      if (dp[jndex] &&
+          wordset.find(s.substr(jndex, index - jndex)) != wordset.end()) {
+        dp[index] = true;
+        break;
+      }
+    }
+  }
+  return dp[s.size()];
+}
+
+// 最长递增子序列
+int lengthOfLIS(const std::vector<int> &nums) {
+  if (nums.size() == 0)
+    return 0;
+  std::vector<int> dp(nums.size(), 0);
+  for (int index = 0; index < nums.size(); ++index) {
+    dp[index] = 1;
+    for (int jndex = 0; jndex < index; ++jndex) {
+      if (nums[jndex] < nums[index]) {
+        dp[index] = std::max(dp[index], dp[jndex] + 1);
+      }
+    }
+  }
+  return *std::max_element(dp.begin(), dp.end());
+}
+
+// 乘积最大子数组
+int maxProduct(const std::vector<int> &nums) {
+  long maxF = nums[0], minF = nums[0], ans = nums[0];
+  for (int index = 1; index < nums.size(); ++index) {
+    long mx = maxF, mn = minF;
+    maxF = std::max(mx * nums[index],
+                    std::max((long)nums[index], mn * nums[index]));
+    minF = std::min(mn * nums[index],
+                    std::min((long)nums[index], mx * nums[index]));
+    if (minF < INT_MIN) {
+      minF = nums[index];
+    }
+    ans = std::max(maxF, ans);
+  }
+  return ans;
+}

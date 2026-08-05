@@ -1022,5 +1022,27 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::string wordBreak_s = "applepenapple";
+  std::vector<std::string> wordBreak_wordDict{"apple", "pen"};
+  std::cout << "-----" << " The result of wordBreak is below " << "-----"
+            << std::endl;
+  std::cout << wordBreak(wordBreak_s, wordBreak_wordDict) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> lengthOfLIS_nums{10, 9, 2, 5, 3, 7, 101, 18};
+  std::cout << "-----" << " The result of lengthOfLIS is below " << "-----"
+            << std::endl;
+  std::cout << lengthOfLIS(lengthOfLIS_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> maxProduct_nums{2, 3, -2, 4};
+  std::cout << "-----" << " The result of maxProduct is below " << "-----"
+            << std::endl;
+  std::cout << maxProduct(maxProduct_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }
