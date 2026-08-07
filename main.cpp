@@ -1044,5 +1044,25 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> canPartition_nums{1, 5, 11, 5};
+  std::cout << "-----" << " The result of canPartition is below " << "-----"
+            << std::endl;
+  std::cout << canPartition(canPartition_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string longestValidParentheses_s = ")()())";
+  std::cout << "-----" << " The result of longestValidParentheses is below "
+            << "-----" << std::endl;
+  std::cout << longestValidParentheses(longestValidParentheses_s) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::cout << "-----" << " The result of uniquePaths is below " << "-----"
+            << std::endl;
+  std::cout << uniquePaths(3, 7) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

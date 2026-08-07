@@ -1843,3 +1843,60 @@ int maxProduct(const std::vector<int> &nums) {
   }
   return ans;
 }
+
+// 分割等和子集
+bool canPartition(const std::vector<int> &nums) {
+  if (nums.size() < 2)
+    return false;
+  int sum = 0, maxnum = 0;
+  for (auto &num : nums) {
+    sum += num;
+    maxnum = std::max(maxnum, num);
+  }
+  if (sum & 1)
+    return false;
+  int target = sum / 2;
+  if (maxnum > target)
+    return false;
+  std::vector<int> dp(target + 1, 0);
+  dp[0] = true;
+  for (int index = 0; index < nums.size(); ++index) {
+    int num = nums[index];
+    for (int jndex = target; jndex >= num; --jndex) {
+      dp[jndex] |= dp[jndex - num];
+    }
+  }
+  return dp[target];
+}
+
+// 最长有效括号
+int longestValidParentheses(std::string s) {
+  int maxans = 0;
+  std::vector<int> dp(s.length(), 0);
+  for (int index = 1; index < s.length(); ++index) {
+    if (s[index] == ')') {
+      if (s[index - 1] == '(') {
+        dp[index] = (index >= 2 ? dp[index - 2] : 0) + 2;
+      } else if (index - dp[index - 1] > 0 &&
+                 s[index - dp[index - 1] - 1] == '(') {
+        dp[index] =
+            dp[index - 1] +
+            ((index - dp[index - 1]) >= 2 ? dp[index - dp[index - 1] - 2] : 0) +
+            2;
+      }
+      maxans = std::max(maxans, dp[index]);
+    }
+  }
+  return maxans;
+}
+
+// 不同路径
+int uniquePaths(int m, int n) {
+  std::vector<int> f(n, 1);
+  for (int index = 1; index < m; ++index) {
+    for (int jndex = 1; jndex < n; ++jndex) {
+      f[jndex] += f[jndex - 1];
+    }
+  }
+  return f[n - 1];
+}

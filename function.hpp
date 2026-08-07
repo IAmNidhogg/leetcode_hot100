@@ -419,5 +419,8 @@ int coinChange(const std::vector<int> &coins, int amount);
 bool wordBreak(std::string s, const std::vector<std::string> &wordDict);
 int lengthOfLIS(const std::vector<int> &nums);
 int maxProduct(const std::vector<int> &nums);
+bool canPartition(const std::vector<int> &nums);
+int longestValidParentheses(std::string s);
+int uniquePaths(int m, int n);
 
 #endif
