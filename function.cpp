@@ -1900,3 +1900,102 @@ int uniquePaths(int m, int n) {
   }
   return f[n - 1];
 }
+
+// 最小路径和
+int minPathSum(const std::vector<std::vector<int>> &grid) {
+  if (grid.size() == 0 || grid[0].size() == 0)
+    return 0;
+  int rows = grid.size(), columns = grid[0].size();
+  auto dp = std::vector<std::vector<int>>(rows, std::vector<int>(columns));
+  dp[0][0] = grid[0][0];
+  for (int index = 1; index < rows; ++index) {
+    dp[index][0] = dp[index - 1][0] + grid[index][0];
+  }
+  for (int jndex = 1; jndex < columns; ++jndex) {
+    dp[0][jndex] = dp[0][jndex - 1] + grid[0][jndex];
+  }
+  for (int index = 1; index < rows; ++index) {
+    for (int jndex = 1; jndex < columns; ++jndex) {
+      dp[index][jndex] = std::min(dp[index - 1][jndex], dp[index][jndex - 1]) +
+                         grid[index][jndex];
+    }
+  }
+  return dp[rows - 1][columns - 1];
+}
+
+// 最长回文字串
+std::string longestPalindrome(std::string s) {
+  if (s.size() < 2)
+    return s;
+  int maxlen = 1;
+  int begin = 0;
+  std::vector<std::vector<int>> dp(s.size(), std::vector<int>(s.size()));
+  for (int index = 0; index < s.size(); ++index) {
+    dp[index][index] = true;
+  }
+  for (int l = 2; l <= s.size(); ++l) {
+    for (int index = 0; index < s.size(); ++index) {
+      int jndex = l + index - 1;
+      if (jndex >= s.size())
+        break;
+      if (s[index] != s[jndex]) {
+        dp[index][jndex] = false;
+      } else {
+        if (jndex - index < 3) {
+          dp[index][jndex] = true;
+        } else {
+          dp[index][jndex] = dp[index + 1][jndex - 1];
+        }
+      }
+      if (dp[index][jndex] && jndex - index + 1 > maxlen) {
+        maxlen = jndex - index + 1;
+        begin = index;
+      }
+    }
+  }
+  return s.substr(begin, maxlen);
+}
+
+// 最长公共子序列
+int longestCommonSubsequence(std::string text1, std::string text2) {
+  int m = text1.length(), n = text2.length();
+  std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1));
+  for (int index = 1; index <= m; ++index) {
+    char c1 = text1[index - 1];
+    for (int jndex = 1; jndex <= n; ++jndex) {
+      char c2 = text2[jndex - 1];
+      if (c1 == c2) {
+        dp[index][jndex] = dp[index - 1][jndex - 1] + 1;
+      } else {
+        dp[index][jndex] = std::max(dp[index - 1][jndex], dp[index][jndex - 1]);
+      }
+    }
+  }
+  return dp[m][n];
+}
+
+// 编辑距离
+int minDistance(std::string word1, std::string word2) {
+  int m = word1.length();
+  int n = word2.length();
+  if (m * n == 0)
+    return m + n;
+  std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1));
+  for (int index = 0; index < m + 1; ++index) {
+    dp[index][0] = index;
+  }
+  for (int jndex = 0; jndex < n + 1; ++jndex) {
+    dp[0][jndex] = jndex;
+  }
+  for (int index = 1; index < m + 1; ++index) {
+    for (int jndex = 1; jndex < n + 1; ++jndex) {
+      int left = dp[index - 1][jndex] + 1;
+      int down = dp[index][jndex - 1] + 1;
+      int left_down = dp[index - 1][jndex - 1];
+      if (word1[index - 1] != word2[jndex - 1])
+        left_down += 1;
+      dp[index][jndex] = std::min(left, std::min(down, left_down));
+    }
+  }
+  return dp[m][n];
+}

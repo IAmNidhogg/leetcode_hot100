@@ -1064,5 +1064,34 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<std::vector<int>> minPathSum_grid{
+      {1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
+  std::cout << "-----" << " The result of minPathSum is below " << "-----"
+            << std::endl;
+  std::cout << minPathSum(minPathSum_grid) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string longestPalindrome_s = "babad";
+  std::cout << "-----" << " The result of longestPalindrome is below "
+            << "-----" << std::endl;
+  std::cout << longestPalindrome(longestPalindrome_s) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string text1 = "abcde", text2 = "ace";
+  std::cout << "-----" << " The result of longestCommonSubsequence is below "
+            << "-----" << std::endl;
+  std::cout << longestCommonSubsequence(text1, text2) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::string word1 = "intention", word2 = "execution";
+  std::cout << "-----" << " The result of minDistance is below " << "-----"
+            << std::endl;
+  std::cout << minDistance(word1, word2) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

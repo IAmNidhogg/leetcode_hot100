@@ -422,5 +422,9 @@ int maxProduct(const std::vector<int> &nums);
 bool canPartition(const std::vector<int> &nums);
 int longestValidParentheses(std::string s);
 int uniquePaths(int m, int n);
+int minPathSum(const std::vector<std::vector<int>> &grid);
+std::string longestPalindrome(std::string s);
+int longestCommonSubsequence(std::string text1, std::string text2);
+int minDistance(std::string word1, std::string word2);
 
 #endif
