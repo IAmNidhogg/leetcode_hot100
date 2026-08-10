@@ -426,5 +426,8 @@ int minPathSum(const std::vector<std::vector<int>> &grid);
 std::string longestPalindrome(std::string s);
 int longestCommonSubsequence(std::string text1, std::string text2);
 int minDistance(std::string word1, std::string word2);
+int singleNumber(const std::vector<int> &nums);
+int majorityElement(std::vector<int> &nums);
+void sortColors(std::vector<int> &nums);
 
 #endif

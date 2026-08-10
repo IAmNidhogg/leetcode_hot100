@@ -1093,5 +1093,27 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> singleNumber_nums{4, 1, 2, 1, 2};
+  std::cout << "-----" << " The result of singleNumber is below " << "-----"
+            << std::endl;
+  std::cout << singleNumber(singleNumber_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> majorityElement_nums{2, 2, 1, 1, 1, 2, 2};
+  std::cout << "-----" << " The result of majorityElement is below " << "-----"
+            << std::endl;
+  std::cout << majorityElement(majorityElement_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> sortColors_nums{2, 0, 2, 1, 1, 0};
+  std::cout << "-----" << " The result of sortColors is below " << "-----"
+            << std::endl;
+  sortColors(sortColors_nums);
+  showVector(sortColors_nums);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

@@ -1999,3 +1999,32 @@ int minDistance(std::string word1, std::string word2) {
   }
   return dp[m][n];
 }
+
+// 只出现一次的数字
+int singleNumber(const std::vector<int> &nums) {
+  int result = 0;
+  for (auto n : nums)
+    result ^= n;
+  return result;
+}
+
+// 多数元素
+int majorityElement(std::vector<int> &nums) {
+  std::sort(nums.begin(), nums.end());
+  return nums[nums.size() / 2];
+}
+
+// 颜色分类
+void sortColors(std::vector<int> &nums) {
+  int left = 0, right = nums.size() - 1;
+  for (int index = 0; index <= right; ++index) {
+    while (index <= right && nums[index] == 2) {
+      std::swap(nums[index], nums[right]);
+      --right;
+    }
+    if (nums[index] == 0) {
+      std::swap(nums[index], nums[left]);
+      ++left;
+    }
+  }
+}
