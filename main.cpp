@@ -1115,5 +1115,20 @@ int main() {
   std::cout << "-----" << " End " << "-----" << std::endl;
   std::cout << std::endl;
 
+  std::vector<int> nextPermutation_nums{1, 2, 3};
+  nextPermutation(nextPermutation_nums);
+  std::cout << "-----" << " The result of nextPermutation is below " << "-----"
+            << std::endl;
+  showVector(nextPermutation_nums);
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
+  std::vector<int> findDuplicate_nums{1, 3, 4, 2, 2};
+  std::cout << "-----" << " The result of findDuplicate is below " << "-----"
+            << std::endl;
+  std::cout << findDuplicate(findDuplicate_nums) << std::endl;
+  std::cout << "-----" << " End " << "-----" << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

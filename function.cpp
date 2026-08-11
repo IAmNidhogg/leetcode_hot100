@@ -2028,3 +2028,34 @@ void sortColors(std::vector<int> &nums) {
     }
   }
 }
+
+// 下一个排列
+void nextPermutation(std::vector<int> &nums) {
+  int index = nums.size() - 2;
+  while (index >= 0 && nums[index] >= nums[index + 1]) {
+    --index;
+  }
+  if (index >= 0) {
+    int jndex = nums.size() - 1;
+    while (jndex >= 0 && nums[index] >= nums[jndex]) {
+      --jndex;
+    }
+    std::swap(nums[index], nums[jndex]);
+  }
+  std::reverse(nums.begin() + index + 1, nums.end());
+}
+
+// 寻找重复数
+int findDuplicate(const std::vector<int> &nums) {
+  int slow = 0, fast = 0;
+  do {
+    slow = nums[slow];
+    fast = nums[nums[fast]];
+  } while (slow != fast);
+  slow = 0;
+  while (slow != fast) {
+    slow = nums[slow];
+    fast = nums[fast];
+  }
+  return slow;
+}

@@ -429,5 +429,7 @@ int minDistance(std::string word1, std::string word2);
 int singleNumber(const std::vector<int> &nums);
 int majorityElement(std::vector<int> &nums);
 void sortColors(std::vector<int> &nums);
+void nextPermutation(std::vector<int> &nums);
+int findDuplicate(const std::vector<int> &nums);
 
 #endif
